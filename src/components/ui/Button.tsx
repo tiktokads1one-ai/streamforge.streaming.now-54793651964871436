@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -21,13 +20,11 @@ export function Button({
   };
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
+    <button
       className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm transition disabled:opacity-50 ${variants[variant]} ${className}`}
       {...props}
     >
       {children}
-    </motion.button>
+    </button>
   );
 }

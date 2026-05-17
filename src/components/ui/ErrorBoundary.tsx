@@ -1,30 +1,7 @@
-import { Component, type ErrorInfo, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-
-interface Props {
-  children: ReactNode;
-  fallback?: ReactNode;
-}
-
-interface State {
-  hasError: boolean;
-}
-
-export class ErrorBoundary extends Component<Props, State> {
-  state: State = { hasError: false };
-
-  static getDerivedStateFromError(): State {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error, info: ErrorInfo) {
-    console.error('StreamForge error:', error, info);
-  }
-
-  render() {
+render() {
     if (this.state.hasError) {
       return (
-        this.fallback ?? (
+        this.props.fallback ?? (
           <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4 px-6 text-center">
             <h2 className="text-2xl font-semibold text-forge-glow">
               Something went wrong
@@ -44,4 +21,3 @@ export class ErrorBoundary extends Component<Props, State> {
     }
     return this.props.children;
   }
-}

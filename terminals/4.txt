@@ -1,0 +1,93 @@
+---
+pid: 19592
+cwd: |
+  C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window
+active_command: npm run dev
+---
+22:13:46 [vite] (client) Pre-transform error: C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\src\components\layout\Navbar.tsx: Unexpected token (80:14)
+
+  78 |
+  79 |         <
+> 80 |           href="https://discord.gg/ujBH8GjuaY"
+     |               ^
+  81 |           target="_blank"
+  82 |           rel="noopener noreferrer"
+  83 |           className="hidden items-center gap-1.5 rounded-full border border-[#5865F2]/40 bg-[#5865F2]/10 px-3.5 py-2 text-sm font-medium text-[#7289da] transition hover:bg-[#5865F2]/20 hover:text-white lg:flex"
+  Plugin: vite:react-babel
+  File: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/src/components/layout/Navbar.tsx:80:14
+  80 |            href="https://discord.gg/ujBH8GjuaY"
+  81 |            target="_blank"
+  82 |            rel="noopener noreferrer"
+     |                      ^
+  83 |            className="hidden items-center gap-1.5 rounded-full border border-[#5865F2]/40 bg-[#5865F2]/10 px-3.5 py-2 text-sm font-medium text-[#7289da] transition hover:bg-[#5865F2]/20 hover:text-white lg:flex"
+  84 |          >
+22:13:46 [vite] Internal server error: C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\src\components\layout\Navbar.tsx: Unexpected token (80:14)
+
+  78 |
+  79 |         <
+> 80 |           href="https://discord.gg/ujBH8GjuaY"
+     |               ^
+  81 |           target="_blank"
+  82 |           rel="noopener noreferrer"
+  83 |           className="hidden items-center gap-1.5 rounded-full border border-[#5865F2]/40 bg-[#5865F2]/10 px-3.5 py-2 text-sm font-medium text-[#7289da] transition hover:bg-[#5865F2]/20 hover:text-white lg:flex"
+  Plugin: vite:react-babel
+  File: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/src/components/layout/Navbar.tsx:80:14
+  80 |            href="https://discord.gg/ujBH8GjuaY"
+  81 |            target="_blank"
+  82 |            rel="noopener noreferrer"
+     |                      ^
+  83 |            className="hidden items-center gap-1.5 rounded-full border border-[#5865F2]/40 bg-[#5865F2]/10 px-3.5 py-2 text-sm font-medium text-[#7289da] transition hover:bg-[#5865F2]/20 hover:text-white lg:flex"
+  84 |          >
+      at constructor (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.unexpected (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:6636:16)
+      at TypeScriptParserMixin.jsxParseIdentifier (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4581:12)
+      at TypeScriptParserMixin.jsxParseNamespacedName (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4588:23)
+      at TypeScriptParserMixin.jsxParseAttribute (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4664:22)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4679:28)
+      at TypeScriptParserMixin.jsxParseOpeningElementAfterName (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10060:18)
+      at TypeScriptParserMixin.jsxParseOpeningElementAt (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4674:17)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4698:33)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\node_modules\@babel\parser\lib\index.js:12764:17)
+22:13:47 [vite] (client) hmr update /src/index.css, /src/components/layout/Layout.tsx
+22:13:49 [vite] (client) hmr update /src/components/layout/Navbar.tsx, /src/index.css
+22:13:51 [vite] (client) hmr update /src/components/layout/Navbar.tsx, /src/index.css (x2)

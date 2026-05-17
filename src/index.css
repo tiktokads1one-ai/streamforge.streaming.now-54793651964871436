@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-surface-base font-sans text-white antialiased;
+    background-image: theme('backgroundImage.mesh');
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-bright/80;
+  }
+
+  .section-title {
+    @apply text-xl font-bold tracking-tight text-white sm:text-2xl;
+  }
+
+  .glass-panel {
+    @apply rounded-2xl border border-white/[0.06] bg-surface-card/80 backdrop-blur-xl;
+  }
+
+  .chip {
+    @apply inline-flex shrink-0 items-center rounded-full border border-white/10 bg-surface-hover px-4 py-2 text-sm font-medium text-white/80 transition;
+  }
+
+  .chip-active {
+    @apply border-accent/50 bg-accent-muted text-accent-bright shadow-glow-sm;
+  }
+
+  .input-search {
+    @apply w-full rounded-2xl border border-white/10 bg-surface-raised/90 py-3.5 pl-12 pr-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-accent/50 focus:ring-2 focus:ring-accent/20;
+  }
+
+  .rating-pill {
+    @apply inline-flex items-center gap-1 rounded-lg bg-accent/20 px-2.5 py-1 text-sm font-bold text-accent-bright ring-1 ring-accent/30;
+  }
+
+  .meta-dot::before {
+    content: '·';
+    @apply mx-1.5 text-white/30;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}

@@ -1,39 +1,24 @@
-import type {
-  Provider,
-  ProviderContext
-} from './Provider';
+import type { Provider, ProviderContext } from './Provider';
 
 export const videasyProvider: Provider = {
   id: 'videasy',
-
   name: 'Videasy',
-
   quality: '4K',
-
   description: 'Premium quality',
 
-  getPlaybackSource: (
-    ctx: ProviderContext
-  ): string => {
-
+  getPlaybackSource: (ctx: ProviderContext): string => {
     const isTv =
       ctx.mediaType === 'tv' ||
       ctx.mediaType === 'anime';
 
     if (isTv) {
+      const season = ctx.season ?? 1;
+      const episode = ctx.episode ?? 1;
 
-      const season =
-        ctx.season ?? 1;
-
-      const episode =
-        ctx.episode ?? 1;
-
-      const t =
-        Date.now();
-
-      return `https://player.videasy.net/tv/${ctx.mediaId}?season=${season}&episode=${episode}&t=${t}`;
+      // use path structure instead of query params
+      return `https://player.videasy.net/tv/${ctx.mediaId}/${season}/${episode}`;
     }
 
-    return `https://player.videasy.net/movie/${ctx.mediaId}?t=${Date.now()}`;
+    return `https://player.videasy.net/movie/${ctx.mediaId}`;
   },
 };

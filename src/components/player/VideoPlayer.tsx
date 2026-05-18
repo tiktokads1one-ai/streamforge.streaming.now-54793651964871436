@@ -101,30 +101,23 @@ bg-black
 "
 >
 
+
 <iframe
-  key={`${source}-${season}-${episode}`}
-
-src={source}
-
-className="
-h-full
-w-full
-"
-
-allowFullScreen
-
-onLoad={()=>{
-setLoading(false)
-}}
-
-onError={()=>{
-setError(true)
-}}
-
-allow="
-fullscreen;
-autoplay
-"
+  key={`${media.id}-${season}-${episode}-${source}`}
+  src={source}
+  id="streamforge-player"
+  title={media.title}
+  className="h-full w-full"
+  allowFullScreen
+  allow="fullscreen; autoplay"
+  referrerPolicy="origin"
+  onLoad={()=>{
+    setLoading(false)
+  }}
+  onError={()=>{
+    setLoading(false)
+    setError(true)
+  }}
 />
 
 {loading&&(
@@ -196,11 +189,12 @@ setEpisode(1);
 }}
 
 onEpisodeSelect={(ep)=>{
+  setLoading(true);
+  setError(false);
 
-setEpisode(ep);
-
-setLoading(true);
-
+  requestAnimationFrame(()=>{
+    setEpisode(ep);
+  });
 }}
 
 />

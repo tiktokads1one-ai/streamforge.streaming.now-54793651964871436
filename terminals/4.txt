@@ -4,17 +4,6 @@ cwd: |
   C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window
 active_command: npm run dev
 ---
-15:08:25 [vite] changed tsconfig file detected: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values. (x2)
-15:08:25 [vite] Pre-transform error: parsing C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\tsconfig.json failed: SyntaxError: Expected ',' or '}' after property value in JSON at position 567 (line 20 column 5)
-  Plugin: vite:esbuild
-  File: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/src/main.tsx
-15:08:25 [vite] Internal server error: parsing C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\tsconfig.json failed: SyntaxError: Expected ',' or '}' after property value in JSON at position 567 (line 20 column 5)
-  Plugin: vite:esbuild
-  File: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/src/main.tsx
-      at file:///C:/Users/Lorenzo%20Rapattoni/.cursor/projects/empty-window/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:8591:10
-15:10:48 [vite] changed tsconfig file detected: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
-15:10:50 [vite] changed tsconfig file detected: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values. (x2)
-15:10:57 [vite] changed tsconfig file detected: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values. (x3)
 15:10:57 [vite] Pre-transform error: parsing C:\Users\Lorenzo Rapattoni\.cursor\projects\empty-window\tsconfig.json failed: SyntaxError: Expected ',' or '}' after property value in JSON at position 623 (line 26 column 1)
   Plugin: vite:esbuild
   File: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/src/main.tsx
@@ -109,3 +98,27 @@ active_command: npm run dev
 18:10:08 [vite] (client) hmr update /src/index.css, /src/App.tsx (x2)
 18:10:43 [vite] (client) page reload src/components/player/VideoPlayer.tsx
 18:10:46 [vite] (client) page reload src/components/player/VideoPlayer.tsx (x2)
+18:14:53 [vite] (client) page reload src/components/ui/Button.tsx
+18:14:53 [vite] (client) page reload src/components/player/episodeselector.tsx
+18:14:53 [vite] (client) hmr update /src/index.css, /src/App.tsx
+18:14:53 [vite] (client) page reload src/components/player/VideoPlayer.tsx
+18:14:53 [vite] (client) hmr update /src/index.css, /src/App.tsx
+18:14:53 [vite] (client) hmr update /src/index.css, /src/App.tsx (x2)
+18:14:53 [vite] (client) page reload src/providers/Provider.ts
+18:14:53 [vite] (client) hmr update /src/App.tsx, /src/index.css
+18:14:53 [vite] (client) page reload tailwind.config.js
+18:14:53 [vite] changed tsconfig file detected: C:/Users/Lorenzo Rapattoni/.cursor/projects/empty-window/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+18:14:53 [vite] (client) hmr update /src/components/ui/ErrorBoundary.tsx, /src/index.css
+18:14:54 [vite] (client) hmr update /src/index.css, /src/App.tsx
+18:14:54 [vite] (client) hmr update /src/index.css, /src/App.tsx (x2)
+18:14:54 [vite] (client) page reload src/components/player/episodeselector.tsx
+18:14:54 [vite] (client) hmr update /src/index.css, /src/App.tsx
+18:14:54 [vite] (client) hmr update /src/index.css, /src/App.tsx (x2)
+18:14:54 [vite] (client) hmr update /src/index.css, /src/App.tsx (x3)
+18:20:59 [vite] (client) hmr update /src/index.css, /src/App.tsx (x4)
+18:21:12 [vite] (client) hmr update /src/index.css, /src/App.tsx (x5)
+18:21:43 [vite] (client) page reload src/components/player/VideoPlayer.tsx
+18:21:51 [vite] (client) page reload src/components/player/VideoPlayer.tsx (x2)
+18:21:59 [vite] (client) page reload src/components/player/VideoPlayer.tsx (x3)
+18:22:33 [vite] (client) page reload src/components/player/VideoPlayer.tsx (x4)
+18:22:37 [vite] (client) page reload src/components/player/VideoPlayer.tsx (x5)

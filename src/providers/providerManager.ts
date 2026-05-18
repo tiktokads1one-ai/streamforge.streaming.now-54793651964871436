@@ -2,12 +2,21 @@ import { readStorage, writeStorage, STORAGE_KEYS } from '@/utils/storage';
 import type { Provider, ProviderContext } from './Provider';
 import { primaryProvider } from './primary';
 import { backupProvider } from './backup';
+import { videasyProvider } from './videasy';
+import { vidsrcProvider } from './vidsrc';
+import { vidsrcMeProvider } from './vidsrcme';
 
-const providers: Provider[] = [primaryProvider, backupProvider];
+const providers: Provider[] = [
+  videasyProvider,
+  vidsrcProvider,
+  primaryProvider,
+  vidsrcMeProvider,
+  backupProvider,
+];
 
 let activeProviderId = readStorage<string>(
   STORAGE_KEYS.provider,
-  primaryProvider.id,
+  videasyProvider.id,
 );
 
 export function getProviders(): Provider[] {
@@ -16,7 +25,7 @@ export function getProviders(): Provider[] {
 
 export function getActiveProvider(): Provider {
   return (
-    providers.find((p) => p.id === activeProviderId) ?? primaryProvider
+    providers.find((p) => p.id === activeProviderId) ?? videasyProvider
   );
 }
 
@@ -26,9 +35,7 @@ export function getProviderById(id: string): Provider | undefined {
 
 export function switchProvider(id: string): Provider {
   const next = getProviderById(id);
-  if (!next) {
-    return getActiveProvider();
-  }
+  if (!next) return getActiveProvider();
   activeProviderId = next.id;
   writeStorage(STORAGE_KEYS.provider, next.id);
   return next;
@@ -45,10 +52,9 @@ export function getPlaybackSourceWithFallback(
   return { source: active.getPlaybackSource(ctx), provider: active };
 }
 
-export function tryFallbackProvider(
-  currentId: string,
-): Provider | null {
-  const fallback = providers.find((p) => p.id !== currentId);
-  if (!fallback) return null;
-  return switchProvider(fallback.id);
+export function tryFallbackProvider(currentId: string): Provider | null {
+  const currentIndex = providers.findIndex((p) => p.id === currentId);
+  const next = providers[currentIndex + 1];
+  if (!next) return null;
+  return switchProvider(next.id);
 }

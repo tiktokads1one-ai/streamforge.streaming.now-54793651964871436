@@ -14,5 +14,7 @@ export interface Provider {
   name: string;
   quality: string;
   description: string;
-  getPlaybackSource: (ctx: ProviderContext) => string;
+  getPlaybackSource: (
+    ctx: ProviderContext
+  ) => string;
 }

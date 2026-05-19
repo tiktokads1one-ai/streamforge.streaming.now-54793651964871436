@@ -7,6 +7,7 @@ import { fetchMediaDetails } from '@/services/media';
 import type { MediaItem, MediaType } from '@/types/media';
 import { useLibraryStore } from '@/store/useLibraryStore';
 
+
 export function WatchPage() {
   const { id } = useParams<{ id: string }>();
   const [searchParams] = useSearchParams();
@@ -32,19 +33,45 @@ export function WatchPage() {
     );
   }
 
-  return (
-    <>
-      <Seo title={`Watch ${media.title}`} description={`Streaming ${media.title}`} />
-      <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
-        <Link
-          to={`/details/${media.id}?type=${media.mediaType}`}
-          className="mb-4 inline-block text-sm text-forge-glow hover:underline"
-        >
-          ← Back to details
-        </Link>
-        <h1 className="mb-4 text-xl font-semibold sm:text-2xl">{media.title}</h1>
-        <VideoPlayer media={media} startAt={progress} />
-      </section>
-    </>
-  );
+ return (
+  <>
+    <Seo
+      title={`Watch ${media.title}`}
+      description={`Streaming ${media.title}`}
+    />
+
+    
+
+    <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
+      <Link
+        to={`/details/${media.id}?type=${media.mediaType}`}
+        className="
+        mb-4
+        inline-block
+        text-sm
+        text-forge-glow
+        hover:underline
+        "
+      >
+        ← Back to details
+      </Link>
+
+      <h1
+        className="
+        mb-4
+        text-xl
+        font-semibold
+        sm:text-2xl
+        "
+      >
+        {media.title}
+      </h1>
+
+      <VideoPlayer
+        media={media}
+        startAt={progress}
+      />
+    </section>
+  </>
+);
 }

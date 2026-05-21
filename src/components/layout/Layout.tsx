@@ -16,7 +16,6 @@ export function Layout() {
       </main>
 
       <Footer />
-
       <MobileNav />
     </>
   );

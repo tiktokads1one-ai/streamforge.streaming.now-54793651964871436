@@ -35,14 +35,16 @@ const BRAND_BY_ID: Record<number, string> = {
 /** Preferred order for the home marquee */
 const FEATURED_IDS = [8, 337, 9, 15, 350, 1899, 531, 386, 283, 384, 3, 192];
 
-function shouldSkipProvider(name: string, id: number): boolean {
+function shouldSkipProvider(name: string): boolean {
   if (/amazon channel|roku channel|apple tv channel/i.test(name)) return true;
+
   if (name === 'Amazon Video') return true;
   if (name === 'Apple TV') return true;
+
   if (/paramount plus (premium|essential)/i.test(name)) return true;
+
   return false;
 }
-
 function sortProvidersForRow(list: WatchProvider[]): WatchProvider[] {
   const byId = new Map(list.map((p) => [p.id, p]));
   const ordered: WatchProvider[] = [];
@@ -88,7 +90,7 @@ export async function fetchWatchProvidersList(): Promise<WatchProvider[]> {
     const mapped: WatchProvider[] = [];
 
     for (const p of data.results) {
-      if (!p.logo_path || shouldSkipProvider(p.provider_name, p.provider_id)) {
+      if (!p.logo_path || shouldSkipProvider(p.provider_name)) {
         continue;
       }
       if (seen.has(p.provider_id)) continue;

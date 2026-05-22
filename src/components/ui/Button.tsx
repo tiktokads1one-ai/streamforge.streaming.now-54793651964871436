@@ -1,33 +1,35 @@
-import { motion } from 'framer-motion';
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type {
+  ButtonHTMLAttributes,
+  ReactNode
+} from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'ghost' | 'outline';
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
+  variant?: "primary" | "secondary";
 }
 
 export function Button({
-  variant = 'primary',
-  className = '',
   children,
+  className = "",
+  variant = "primary",
   ...props
 }: ButtonProps) {
-  const variants = {
-    primary:
-      'bg-gradient-to-r from-violet-600 to-indigo-500 text-white font-semibold shadow-glow hover:brightness-110',
-    ghost: 'bg-white/5 text-white hover:bg-white/10 border border-white/10',
-    outline:
-      'border border-accent/50 text-accent-bright hover:bg-accent-muted shadow-glow-sm',
-  };
-
   return (
-    <motion.button
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm transition disabled:opacity-50 ${variants[variant]} ${className}`}
+    <button
+      className={`
+        rounded-full px-6 py-3 font-semibold
+        transition-all duration-300
+        ${
+          variant === "primary"
+            ? "bg-indigo-500 hover:bg-indigo-600 text-white"
+            : "bg-white/10 border border-white/10 hover:bg-white/20 text-white"
+        }
+        ${className}
+      `}
       {...props}
     >
       {children}
-    </motion.button>
+    </button>
   );
 }

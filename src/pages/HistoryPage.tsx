@@ -15,7 +15,7 @@ export function HistoryPage() {
         <div className="mb-6 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Watch History</h1>
           {history.length > 0 && (
-            <Button variant="ghost" onClick={clearHistory}>
+           <Button variant="secondary" onClick={clearHistory}>
               Clear
             </Button>
           )}

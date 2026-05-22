@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import type { MediaItem } from '@/types/media';
 import { posterImage } from '@/utils/images';
@@ -7,10 +6,9 @@ import { RatingBadge } from '@/components/ui/RatingBadge';
 
 interface SearchResultCardProps {
   item: MediaItem;
-  index?: number;
 }
 
-export function SearchResultCard({ item, index = 0 }: SearchResultCardProps) {
+export function SearchResultCard({ item }: SearchResultCardProps) {
   const type =
     item.mediaType === 'tv'
       ? 'TV'
@@ -19,12 +17,7 @@ export function SearchResultCard({ item, index = 0 }: SearchResultCardProps) {
         : 'Movie';
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: Math.min(index * 0.04, 0.4) }}
-      className="group flex gap-4 rounded-2xl border border-white/[0.06] bg-surface-card/60 p-3 transition hover:border-accent/30 hover:bg-surface-hover sm:gap-5 sm:p-4"
-    >
+    <article className="group relative flex w-full gap-4 rounded-2xl border border-white/[0.06] bg-surface-card/60 p-3 transition hover:border-accent/30 hover:bg-surface-hover sm:gap-5 sm:p-4">
       <Link
         to={`/details/${item.id}?type=${item.mediaType}`}
         className="relative h-[120px] w-20 shrink-0 overflow-hidden rounded-lg sm:h-[140px] sm:w-[95px]"
@@ -36,7 +29,8 @@ export function SearchResultCard({ item, index = 0 }: SearchResultCardProps) {
           className="h-full w-full object-cover transition group-hover:scale-105"
         />
       </Link>
-      <motion.div className="flex min-w-0 flex-1 flex-col justify-center">
+
+      <div className="flex min-w-0 flex-1 flex-col justify-center">
         <div className="mb-1 flex flex-wrap items-center gap-2">
           <RatingBadge rating={item.rating} size="sm" />
           <span className="rounded-md bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/50">
@@ -63,8 +57,9 @@ export function SearchResultCard({ item, index = 0 }: SearchResultCardProps) {
             {truncate(item.overview, 140)}
           </p>
         )}
-      </motion.div>
-      <motion.div className="hidden shrink-0 flex-col justify-center gap-2 sm:flex">
+      </div>
+
+      <div className="hidden shrink-0 flex-col justify-center gap-2 sm:flex">
         <Link
           to={`/details/${item.id}?type=${item.mediaType}`}
           className="rounded-full border border-white/10 px-4 py-2 text-center text-xs font-medium text-white/70 transition hover:border-accent/50 hover:text-accent-bright"
@@ -73,11 +68,11 @@ export function SearchResultCard({ item, index = 0 }: SearchResultCardProps) {
         </Link>
         <Link
           to={`/watch/${item.id}?type=${item.mediaType}`}
-          className="rounded-full bg-accent px-4 py-2 text-center text-xs font-bold text-black shadow-glow-sm transition hover:brightness-110"
+          className="rounded-full bg-gradient-to-r from-violet-600 to-indigo-500 px-4 py-2 text-center text-xs font-bold text-white shadow-glow-sm transition hover:brightness-110"
         >
           Watch
         </Link>
-      </motion.div>
-    </motion.div>
+      </div>
+    </article>
   );
 }

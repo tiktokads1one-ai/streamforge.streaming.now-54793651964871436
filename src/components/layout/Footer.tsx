@@ -10,7 +10,7 @@ export function Footer() {
           <li>✓ Switch servers anytime</li>
         </ul>
         <p className="mt-6 text-[11px] text-white/30">
-          StreamForge · Metadata from TMDB · Playback via VidCore embed
+          StreamForge · TMDB metadata · Multi-server playback
         </p>
       </div>
     </footer>

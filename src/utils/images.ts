@@ -19,3 +19,8 @@ export function posterImage(
 ): string {
   return tmdbImage(path, size);
 }
+
+export function profileImage(path?: string | null): string {
+  if (!path) return '/placeholder-poster.svg';
+  return tmdbImage(path, 'w185');
+}

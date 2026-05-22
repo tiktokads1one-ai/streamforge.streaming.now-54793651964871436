@@ -1,22 +1,24 @@
 import { readStorage, writeStorage, STORAGE_KEYS } from '@/utils/storage';
 import type { Provider, ProviderContext } from './Provider';
 import { primaryProvider } from './primary';
-import { backupProvider } from './backup';
 import { videasyProvider } from './videasy';
 import { vidsrcProvider } from './vidsrc';
 import { vidsrcMeProvider } from './vidsrcme';
+import { vidsrc0Provider } from './vidsrc0';
+import { backupProvider } from './backup';
 
 const providers: Provider[] = [
+  primaryProvider,
   videasyProvider,
   vidsrcProvider,
-  primaryProvider,
   vidsrcMeProvider,
+  vidsrc0Provider,
   backupProvider,
 ];
 
 let activeProviderId = readStorage<string>(
   STORAGE_KEYS.provider,
-  videasyProvider.id,
+  primaryProvider.id,
 );
 
 export function getProviders(): Provider[] {
@@ -25,7 +27,7 @@ export function getProviders(): Provider[] {
 
 export function getActiveProvider(): Provider {
   return (
-    providers.find((p) => p.id === activeProviderId) ?? videasyProvider
+    providers.find((p) => p.id === activeProviderId) ?? primaryProvider
   );
 }
 

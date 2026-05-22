@@ -28,7 +28,7 @@ export function HistoryPage() {
               <li key={`${entry.media.id}-${entry.watchedAt}`}>
                 <Link
                   to={`/details/${entry.media.id}?type=${entry.media.mediaType}`}
-                  className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-3 transition hover:border-forge-green/40"
+                  className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-3 transition hover:border-accent/40"
                 >
                   <img
                     src={posterImage(entry.media.posterPath)}

@@ -65,4 +65,21 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .providers-marquee .providers-track {
+    animation: providers-marquee 45s linear infinite;
+  }
+
+  .providers-marquee:hover .providers-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes providers-marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }

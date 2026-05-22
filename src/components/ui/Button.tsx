@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,18 +14,20 @@ export function Button({
 }: ButtonProps) {
   const variants = {
     primary:
-      'bg-gradient-to-r from-forge-green to-emerald-400 text-black font-semibold shadow-glow hover:brightness-110',
+      'bg-gradient-to-r from-violet-600 to-indigo-500 text-white font-semibold shadow-glow hover:brightness-110',
     ghost: 'bg-white/5 text-white hover:bg-white/10 border border-white/10',
     outline:
-      'border border-forge-green/50 text-forge-glow hover:bg-forge-green/10 shadow-glow-sm',
+      'border border-accent/50 text-accent-bright hover:bg-accent-muted shadow-glow-sm',
   };
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
       className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm transition disabled:opacity-50 ${variants[variant]} ${className}`}
       {...props}
     >
       {children}
-    </button>
+    </motion.button>
   );
 }

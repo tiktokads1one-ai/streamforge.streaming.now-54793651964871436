@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Seo } from '@/components/ui/Seo';
 import { PageLoader } from '@/components/ui/PageLoader';
@@ -28,6 +28,7 @@ import {
   getRecentSearches,
 } from '@/utils/searchHistory';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { fetchMoviesByWatchProvider } from '@/services/watchProviders';
 
 const TYPE_TABS: { id: SearchFilters['type']; label: string }[] = [
   { id: 'all', label: 'All' },
@@ -36,11 +37,20 @@ const TYPE_TABS: { id: SearchFilters['type']; label: string }[] = [
   { id: 'anime', label: 'Anime' },
 ];
 
+const GENRE_FILTER_CHIPS = [
+  'Action',
+  'Comedy',
+  'Horror',
+  'Sci-Fi',
+  'Romance',
+  'Thriller',
+];
+
+const YEAR_CHIPS = ['2025', '2024', '2023', '2022'];
+
 const RATING_CHIPS = [
-  { value: 0, label: 'Any rating' },
-  { value: 6, label: '6+' },
-  { value: 7, label: '7+' },
-  { value: 8, label: '8+' },
+  { value: 0, label: 'Any' },
+  { value: 8, label: '8+ HD' },
 ];
 
 const TYPE_TITLES: Record<string, string> = {
@@ -69,6 +79,7 @@ function deduped(items: MediaItem[]): MediaItem[] {
 }
 
 export function SearchPage() {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(() => searchParams.get('q') ?? '');
   const [filters, setFilters] = useState<SearchFilters>(() =>
@@ -88,21 +99,39 @@ export function SearchPage() {
 
   const debouncedQuery = useDebounce(query, 350);
   const hasQuery = debouncedQuery.trim().length > 0;
-  const hasGenreBrowse = !hasQuery && Boolean(filters.genre);
-  const hasTypeBrowse = !hasQuery && !filters.genre && filters.type !== 'all';
-  const isFiltered = hasQuery || hasGenreBrowse || hasTypeBrowse;
+  const hasDiscoverFilters =
+    !hasQuery &&
+    (Boolean(filters.genre) ||
+      Boolean(filters.year) ||
+      filters.minRating > 0);
+  const hasGenreBrowse = hasDiscoverFilters;
+  const hasTypeBrowse =
+    !hasQuery && !hasDiscoverFilters && filters.type !== 'all';
+  const watchProviderId = searchParams.get('watch');
+  const watchProviderName = searchParams.get('providerName') ?? 'Provider';
+  const hasWatchBrowse = !hasQuery && Boolean(watchProviderId);
+  const isFiltered =
+    hasQuery || hasGenreBrowse || hasTypeBrowse || hasWatchBrowse;
 
   const syncUrl = useCallback(
     (q: string, f: SearchFilters) => {
       const next = new URLSearchParams();
       if (q.trim()) next.set('q', q.trim());
+      else {
+        const watch = searchParams.get('watch');
+        const providerName = searchParams.get('providerName');
+        if (watch) {
+          next.set('watch', watch);
+          if (providerName) next.set('providerName', providerName);
+        }
+      }
       if (f.type !== 'all') next.set('type', f.type);
       if (f.genre) next.set('genre', f.genre);
       if (f.year) next.set('year', f.year);
       if (f.minRating > 0) next.set('rating', String(f.minRating));
       setSearchParams(next, { replace: true });
     },
-    [setSearchParams],
+    [setSearchParams, searchParams],
   );
 
   useEffect(() => {
@@ -124,7 +153,7 @@ export function SearchPage() {
     let cancelled = false;
 
     async function load(pageNum: number, append: boolean) {
-      if (!hasQuery && !hasGenreBrowse && !hasTypeBrowse) {
+      if (!hasQuery && !hasGenreBrowse && !hasTypeBrowse && !hasWatchBrowse) {
         setResults([]);
         setTotalPages(0);
         setTotalResults(0);
@@ -135,6 +164,21 @@ export function SearchPage() {
       else setLoading(true);
 
       try {
+        if (hasWatchBrowse && watchProviderId) {
+          const items = await fetchMoviesByWatchProvider(
+            Number(watchProviderId),
+            pageNum,
+          );
+          if (cancelled) return;
+          setResults((prev) => (append ? [...prev, ...items] : items));
+          setPage(pageNum);
+          setTotalPages(pageNum < 5 ? pageNum + 1 : pageNum);
+          setTotalResults((prev) =>
+            append ? prev + items.length : items.length,
+          );
+          return;
+        }
+
         const data = await searchMediaPaginated(
           debouncedQuery,
           filters,
@@ -165,11 +209,20 @@ export function SearchPage() {
     return () => {
       cancelled = true;
     };
-  }, [debouncedQuery, filters, hasQuery, hasGenreBrowse, hasTypeBrowse, syncUrl]);
+  }, [
+    debouncedQuery,
+    filters,
+    hasQuery,
+    hasGenreBrowse,
+    hasTypeBrowse,
+    hasWatchBrowse,
+    watchProviderId,
+    syncUrl,
+  ]);
 
   // Browse content — loads multiple pages for a full grid
   useEffect(() => {
-    if (hasQuery || hasGenreBrowse) return;
+    if (hasQuery || hasGenreBrowse || hasWatchBrowse) return;
 
     setBrowseLoading(true);
 
@@ -215,31 +268,65 @@ export function SearchPage() {
     }
 
     loadBrowse();
-  }, [hasQuery, hasGenreBrowse, filters.type]);
+  }, [hasQuery, hasGenreBrowse, hasWatchBrowse, filters.type]);
 
   const loadMore = useCallback(() => {
     if (loadingMore || page >= totalPages) return;
     setLoadingMore(true);
-    searchMediaPaginated(debouncedQuery, filters, page + 1).then((data) => {
+    const nextPage = page + 1;
+
+    if (hasWatchBrowse && watchProviderId) {
+      fetchMoviesByWatchProvider(Number(watchProviderId), nextPage).then(
+        (items) => {
+          setResults((prev) => [...prev, ...items]);
+          setPage(nextPage);
+          setLoadingMore(false);
+        },
+      );
+      return;
+    }
+
+    searchMediaPaginated(debouncedQuery, filters, nextPage).then((data) => {
       setResults((prev) => [...prev, ...data.results]);
       setPage(data.page);
       setLoadingMore(false);
     });
-  }, [loadingMore, page, totalPages, debouncedQuery, filters]);
-
-  const sentinelRef = useInfiniteScroll({
-    enabled: isFiltered && page < totalPages,
-    onLoadMore: loadMore,
-  });
+  }, [
+    loadingMore,
+    page,
+    totalPages,
+    debouncedQuery,
+    filters,
+    hasWatchBrowse,
+    watchProviderId,
+  ]);
 
   const showSuggestions = focused && hasQuery && suggestions.length > 0;
+  /** Avoid results rendering under the open suggestions dropdown */
+  const showResultList = isFiltered && !showSuggestions;
+
+  const sentinelRef = useInfiniteScroll({
+    enabled: showResultList && page < totalPages,
+    onLoadMore: loadMore,
+  });
 
   const resultTitle = useMemo(() => {
     if (hasQuery) return `${totalResults} results for "${debouncedQuery}"`;
     if (hasGenreBrowse) return `Top ${filters.genre} titles`;
     if (hasTypeBrowse) return TYPE_TITLES[filters.type] ?? 'Browse';
+    if (hasWatchBrowse) return `Movies on ${watchProviderName}`;
     return '';
-  }, [hasQuery, hasGenreBrowse, hasTypeBrowse, totalResults, debouncedQuery, filters.genre, filters.type]);
+  }, [
+    hasQuery,
+    hasGenreBrowse,
+    hasTypeBrowse,
+    hasWatchBrowse,
+    watchProviderName,
+    totalResults,
+    debouncedQuery,
+    filters.genre,
+    filters.type,
+  ]);
 
   const commitSearch = () => {
     setFocused(false);
@@ -250,7 +337,10 @@ export function SearchPage() {
     <>
       <Seo title="Search" description="Find movies, TV shows and anime on StreamForge." />
 
-      <header className="sticky top-[57px] z-40 border-b border-white/[0.06] bg-surface-base/95 px-4 py-4 backdrop-blur-xl sm:px-6 lg:px-8">
+      <header className="sticky top-[57px] z-40 border-b border-white/[0.06] bg-surface-base/95 px-4 py-6 backdrop-blur-xl sm:px-6 lg:px-8 isolate">
+        <h1 className="mb-4 text-2xl font-bold tracking-tight sm:text-3xl">
+          Search
+        </h1>
         <SearchInput
           value={query}
           onChange={setQuery}
@@ -259,14 +349,16 @@ export function SearchPage() {
           showSuggestions={showSuggestions}
           onFocusChange={setFocused}
           onSelectSuggestion={(item) => {
-            setQuery(item.title);
+            addRecentSearch(item.title);
+            setRecent(getRecentSearches());
             setFocused(false);
+            navigate(`/details/${item.id}?type=${item.mediaType}`);
           }}
           autoFocus
           size="lg"
         />
 
-        <div className="mt-4 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+        <div className="mt-5 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
           {TYPE_TABS.map((tab) => (
             <button
               key={tab.id}
@@ -280,15 +372,39 @@ export function SearchPage() {
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <input
-            type="number"
-            placeholder="Year"
-            value={filters.year}
-            onChange={(e) =>
-              setFilters((f) => ({ ...f, year: e.target.value }))
-            }
-            className="w-24 rounded-full border border-white/10 bg-surface-raised px-3 py-2 text-sm outline-none focus:border-accent/40"
-          />
+          {GENRE_FILTER_CHIPS.map((genre) => (
+            <button
+              key={genre}
+              type="button"
+              onClick={() =>
+                setFilters((f) => ({
+                  ...f,
+                  genre: f.genre === genre ? '' : genre,
+                }))
+              }
+              className={`chip text-xs ${filters.genre === genre ? 'chip-active' : ''}`}
+            >
+              {genre}
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          {YEAR_CHIPS.map((year) => (
+            <button
+              key={year}
+              type="button"
+              onClick={() =>
+                setFilters((f) => ({
+                  ...f,
+                  year: f.year === year ? '' : year,
+                }))
+              }
+              className={`chip text-xs ${filters.year === year ? 'chip-active' : ''}`}
+            >
+              {year}
+            </button>
+          ))}
           {RATING_CHIPS.map((chip) => (
             <button
               key={chip.value}
@@ -301,11 +417,16 @@ export function SearchPage() {
               {chip.label}
             </button>
           ))}
-          {(filters.year || filters.minRating > 0) && (
+          {(filters.genre || filters.year || filters.minRating > 0) && (
             <button
               type="button"
               onClick={() =>
-                setFilters((f) => ({ ...f, year: '', minRating: 0 }))
+                setFilters((f) => ({
+                  ...f,
+                  genre: '',
+                  year: '',
+                  minRating: 0,
+                }))
               }
               className="text-xs text-accent-bright hover:underline"
             >
@@ -357,7 +478,7 @@ export function SearchPage() {
                     onClick={() => setQuery(term)}
                     className="chip hover:border-accent/40 hover:text-accent-bright"
                   >
-                    {term}
+                    🔥 {term}
                   </button>
                 ))}
               </div>
@@ -415,35 +536,36 @@ export function SearchPage() {
           </section>
         )}
 
-        {/* Search results or genre browse */}
-        {(hasQuery || hasGenreBrowse) && (
-          <>
+        {/* Search results or genre browse — hidden while suggestion dropdown is open */}
+        {showResultList && (
+          <section className="relative z-0 flex flex-col gap-3">
             {resultTitle && (
-              <p className="mb-4 text-sm text-white/50">{resultTitle}</p>
+              <p className="mb-1 text-sm text-white/50">{resultTitle}</p>
             )}
             {loading ? (
               <PageLoader />
             ) : results.length === 0 ? (
-              <motion.div className="glass-panel py-16 text-center">
+              <div className="glass-panel py-16 text-center">
                 <p className="text-lg font-semibold text-white">No results found</p>
                 <p className="mt-2 text-sm text-white/50">
                   Try a different title, loosen filters, or browse genres below.
                 </p>
-              </motion.div>
+              </div>
             ) : (
-              <ul className="space-y-3">
-                {results.map((item, i) => (
-                  <li key={`${item.mediaType}-${item.id}-${i}`}>
-                    <SearchResultCard item={item} index={i} />
-                  </li>
+              <div className="flex flex-col gap-3">
+                {results.map((item) => (
+                  <SearchResultCard
+                    key={`${item.mediaType}-${item.id}`}
+                    item={item}
+                  />
                 ))}
-              </ul>
+              </div>
             )}
             {loadingMore && (
               <p className="py-6 text-center text-sm text-white/40">Loading more…</p>
             )}
-            <div ref={sentinelRef} className="h-10" />
-          </>
+            <div ref={sentinelRef} className="h-10 shrink-0" />
+          </section>
         )}
       </main>
     </>

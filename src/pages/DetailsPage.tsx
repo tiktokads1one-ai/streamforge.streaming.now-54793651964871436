@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { Seo } from '@/components/ui/Seo';
 import { MediaRow } from '@/components/media/MediaRow';
 import { PageLoader } from '@/components/ui/PageLoader';
-import { RatingBadge } from '@/components/ui/RatingBadge';
+import { DetailsHero } from '@/components/details/DetailsHero';
+import { CastCarousel } from '@/components/details/CastCarousel';
 import {
   fetchMediaDetails,
   fetchRecommendations,
@@ -12,8 +12,7 @@ import {
 } from '@/services/media';
 import type { MediaItem, MediaType } from '@/types/media';
 import { useLibraryStore } from '@/store/useLibraryStore';
-import { backdropImage, posterImage } from '@/utils/images';
-import { formatRuntime, formatYear } from '@/utils/format';
+import { posterImage } from '@/utils/images';
 
 export function DetailsPage() {
   const { id } = useParams<{ id: string }>();
@@ -60,12 +59,6 @@ export function DetailsPage() {
   }
 
   const fav = isFavorite(media.id);
-  const typeLabel =
-    media.mediaType === 'tv'
-      ? 'TV Series'
-      : media.mediaType === 'anime'
-        ? 'Anime'
-        : 'Movie';
 
   return (
     <>
@@ -74,90 +67,29 @@ export function DetailsPage() {
         description={media.overview}
         image={posterImage(media.posterPath)}
       />
-      <section className="relative">
-        <div className="absolute inset-0 h-[50vh] overflow-hidden">
-          <img
-            src={backdropImage(media.backdropPath)}
-            alt=""
-            className="h-full w-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-hero-gradient" />
-        </div>
 
-        <motion.div className="relative mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-8 md:flex-row">
-            <img
-              src={posterImage(media.posterPath)}
-              alt={media.title}
-              className="mx-auto w-44 shrink-0 rounded-2xl shadow-poster ring-1 ring-white/10 md:mx-0 md:w-52"
-            />
-            <div className="flex-1">
-              <motion.div className="mb-3 flex flex-wrap items-center gap-3">
-                <RatingBadge rating={media.rating} size="lg" />
-                <span className="text-sm text-white/60">
-                  {formatYear(media.releaseDate, media.year)}
-                </span>
-                <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs font-bold uppercase tracking-wider">
-                  {typeLabel}
-                </span>
-                <span className="text-sm text-white/50">
-                  {formatRuntime(media.runtime)}
-                </span>
-              </motion.div>
+      <DetailsHero
+        media={media}
+        isFavorite={fav}
+        onToggleFavorite={() => toggleFavorite(media)}
+      />
 
-              <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                {media.title}
-              </h1>
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <section className="mb-12">
+          <h2 className="section-label mb-3">Overview</h2>
+          <p className="max-w-4xl text-base leading-relaxed text-white/70 sm:text-lg">
+            {media.overview || 'No overview available.'}
+          </p>
+        </section>
+      </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                {media.genres.map((g) => (
-                  <Link
-                    key={g}
-                    to={`/search?genre=${encodeURIComponent(g)}`}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 transition hover:border-accent/40 hover:text-accent-bright"
-                  >
-                    {g}
-                  </Link>
-                ))}
-              </div>
+      <CastCarousel cast={media.cast} />
 
-              <p className="mt-5 max-w-3xl text-base leading-relaxed text-white/70">
-                {media.overview}
-              </p>
-
-              {media.cast.length > 0 && (
-                <p className="mt-6 text-sm text-white/50">
-                  <span className="font-semibold text-white/70">Cast: </span>
-                  {media.cast.map((c) => c.name).join(' · ')}
-                </p>
-              )}
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  to={`/watch/${media.id}?type=${media.mediaType}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-bold text-black shadow-glow transition hover:brightness-110"
-                >
-                  ▶ Watch Now
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => toggleFavorite(media)}
-                  className={`rounded-full border px-6 py-3.5 text-sm font-semibold transition ${
-                    fav
-                      ? 'border-accent/50 bg-accent-muted text-accent-bright'
-                      : 'border-white/15 bg-white/5 text-white hover:border-accent/40'
-                  }`}
-                >
-                  {fav ? '★ Saved' : '☆ Save'}
-                </button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      <MediaRow label="Similar" title="More Like This" items={similar} />
-      <MediaRow label="Picks" title="Recommended" items={recommendations} />
+      <div className="mb-4 px-4 sm:px-6 lg:px-8">
+        <h2 className="section-title">You may also like</h2>
+      </div>
+      <MediaRow label="Similar" title="Similar" items={similar} />
+      <MediaRow label="Recommended" title="Recommended" items={recommendations} />
     </>
   );
 }

@@ -1,5 +1,8 @@
 import type { MediaType } from '@/types/media';
 
+export type ProviderBadge = 'FAST' | 'HD' | 'ULTRA' | null;
+export type ProviderIcon = 'monitor' | 'cloud' | 'server' | 'layers';
+
 export interface ProviderContext {
   mediaId: string;
   mediaType: MediaType;
@@ -14,7 +17,7 @@ export interface Provider {
   name: string;
   quality: string;
   description: string;
-  getPlaybackSource: (
-    ctx: ProviderContext
-  ) => string;
+  badge?: ProviderBadge;
+  icon: ProviderIcon;
+  getPlaybackSource: (ctx: ProviderContext) => string;
 }

@@ -3,9 +3,10 @@ import { buildVidcoreUrl } from './vidcore';
 
 export const backupProvider: Provider = {
   id: 'backup',
-  name: 'Backup',
+  name: 'AdRock',
   quality: 'Ultra',
-  description: 'Fallback stream',
+  description: 'Fallback · backup server',
+  icon: 'server',
   getPlaybackSource: (ctx) =>
     buildVidcoreUrl(ctx, { server: 'backup' }),
 };

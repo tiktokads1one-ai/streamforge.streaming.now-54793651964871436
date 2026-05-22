@@ -2,12 +2,12 @@ import type { Provider, ProviderContext } from './Provider';
 
 export const vidsrcMeProvider: Provider = {
   id: 'vidsrcme',
-  name: 'VidSrc Pro',
+  name: 'VidPlus',
   quality: 'HD+',
-  description: 'Best for older titles',
+  description: 'Extended catalog',
+  icon: 'layers',
   getPlaybackSource: (ctx: ProviderContext): string => {
     const isTv = ctx.mediaType === 'tv' || ctx.mediaType === 'anime';
-    // vidsrc.me uses tmdb ids directly
     const base = 'https://vidsrc.me/embed';
     const path = isTv ? 'tv' : 'movie';
     const url = new URL(`${base}/${path}?tmdb=${ctx.mediaId}`);

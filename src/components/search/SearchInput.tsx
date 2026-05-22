@@ -63,7 +63,7 @@ export function SearchInput({
           if (e.key === 'Escape') onChange('');
         }}
         placeholder="Search movies, TV shows, anime…"
-        className={`input-search ${size === 'lg' ? 'py-4 text-lg' : ''}`}
+        className={`input-search ${size === 'lg' ? 'py-5 pl-14 text-xl sm:text-2xl' : ''}`}
         autoComplete="off"
       />
       {value && (
@@ -82,7 +82,7 @@ export function SearchInput({
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 max-h-[min(420px,60vh)] overflow-y-auto rounded-2xl border border-white/10 bg-surface-raised/98 p-2 shadow-card backdrop-blur-xl"
+            className="absolute left-0 right-0 top-[calc(100%+8px)] z-[60] max-h-[min(480px,65vh)] overflow-y-auto rounded-2xl border border-violet-500/20 bg-surface-raised p-2 shadow-[0_16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl"
           >
             {suggestions.map((item) => (
               <li key={`${item.mediaType}-${item.id}`}>
@@ -95,7 +95,7 @@ export function SearchInput({
                   <img
                     src={posterImage(item.posterPath, 'w342')}
                     alt=""
-                    className="h-14 w-10 rounded-md object-cover"
+                    className="h-[72px] w-[48px] shrink-0 rounded-lg object-cover shadow-md ring-1 ring-white/10"
                   />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-medium text-white">

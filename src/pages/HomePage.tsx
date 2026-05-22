@@ -2,30 +2,40 @@ import { useEffect, useState } from 'react';
 import { Seo } from '@/components/ui/Seo';
 import { HeroCarousel } from '@/components/media/HeroCarousel';
 import { MediaRow } from '@/components/media/MediaRow';
+import { Top10Row } from '@/components/media/Top10Row';
 import { GenreBar } from '@/components/media/GenreBar';
+import { WatchProvidersRow } from '@/components/media/WatchProvidersRow';
+import { HOME_CONTENT_ROWS } from '@/config/homeRows';
 import {
   fetchAnime,
+  fetchAwardWinners,
+  fetchDiscoverByGenre,
   fetchHeroItems,
   fetchNewReleases,
-  fetchPopularMovies,
-  fetchPopularTv,
   fetchRecommendations,
-  fetchTopRated,
-  fetchTrending,
+  fetchTrendingAllWeek,
+  fetchTrendingToday,
+  fetchZombiePicks,
 } from '@/services/media';
 import type { MediaItem } from '@/types/media';
 import { useLibraryStore } from '@/store/useLibraryStore';
 
+async function loadHomeRow(
+  row: (typeof HOME_CONTENT_ROWS)[number],
+): Promise<MediaItem[]> {
+  if (row.title === 'Award Winners') return fetchAwardWinners();
+  if (row.title === 'Zombie') return fetchZombiePicks();
+  if (row.title === 'Anime') return fetchAnime();
+  return fetchDiscoverByGenre(row.genre, row.mediaType ?? 'movie');
+}
+
 export function HomePage() {
   const continueWatching = useLibraryStore((s) => s.continueWatching);
   const [hero, setHero] = useState<MediaItem[]>([]);
-  const [trending, setTrending] = useState<MediaItem[]>([]);
+  const [trendingToday, setTrendingToday] = useState<MediaItem[]>([]);
   const [topWeek, setTopWeek] = useState<MediaItem[]>([]);
-  const [movies, setMovies] = useState<MediaItem[]>([]);
-  const [tv, setTv] = useState<MediaItem[]>([]);
-  const [anime, setAnime] = useState<MediaItem[]>([]);
+  const [genreRows, setGenreRows] = useState<Record<string, MediaItem[]>>({});
   const [newReleases, setNewReleases] = useState<MediaItem[]>([]);
-  const [topRated, setTopRated] = useState<MediaItem[]>([]);
   const [recommendations, setRecommendations] = useState<MediaItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -33,27 +43,32 @@ export function HomePage() {
     let cancelled = false;
     (async () => {
       try {
-        const [heroItems, trend, popMovies, popTv, animeList, releases, rated] =
-          await Promise.all([
-            fetchHeroItems(),
-            fetchTrending('movie'),
-            fetchPopularMovies(),
-            fetchPopularTv(),
-            fetchAnime(),
-            fetchNewReleases(),
-            fetchTopRated('movie'),
-          ]);
+        const [heroItems, today, week, releases] = await Promise.all([
+          fetchHeroItems(),
+          fetchTrendingToday(),
+          fetchTrendingAllWeek(),
+          fetchNewReleases(),
+        ]);
         if (cancelled) return;
         setHero(heroItems);
-        setTrending(trend);
-        setTopWeek(trend.slice(0, 12));
-        setMovies(popMovies);
-        setTv(popTv);
-        setAnime(animeList);
+        setTrendingToday(today);
+        setTopWeek(week);
         setNewReleases(releases);
-        setTopRated(rated);
-        const recSource = heroItems[0] ?? trend[0];
-        if (recSource) {
+
+        const rowResults = await Promise.all(
+          HOME_CONTENT_ROWS.map(async (row) => ({
+            key: row.title,
+            items: await loadHomeRow(row),
+          })),
+        );
+        if (!cancelled) {
+          setGenreRows(
+            Object.fromEntries(rowResults.map((r) => [r.key, r.items])),
+          );
+        }
+
+        const recSource = heroItems[0] ?? today[0];
+        if (recSource && !cancelled) {
           const recs = await fetchRecommendations(
             recSource.id,
             recSource.mediaType,
@@ -81,6 +96,7 @@ export function HomePage() {
       <Seo />
       <HeroCarousel items={hero} loading={loading} />
       <GenreBar />
+      <WatchProvidersRow />
 
       {continueWatching.length > 0 && (
         <MediaRow
@@ -92,40 +108,26 @@ export function HomePage() {
       )}
 
       <MediaRow
-        label="Trending"
-        title="Popular This Week"
-        items={topWeek}
+        label="🔥 Trending"
+        title="Trending Today"
+        items={trendingToday}
         loading={loading}
         viewAllHref="/search?q=trending"
       />
-      <MediaRow
-        label="Movies"
-        title="Trending Movies"
-        items={trending}
-        loading={loading}
-        viewAllHref="/search?type=movie"
-      />
-      <MediaRow
-        label="Editor's picks"
-        title="Popular Movies"
-        items={movies}
-        loading={loading}
-        viewAllHref="/search?type=movie"
-      />
-      <MediaRow
-        label="Series"
-        title="TV Shows"
-        items={tv}
-        loading={loading}
-        viewAllHref="/search?type=tv"
-      />
-      <MediaRow
-        label="Anime"
-        title="Anime & Animation"
-        items={anime}
-        loading={loading}
-        viewAllHref="/search?type=anime"
-      />
+
+      <Top10Row items={topWeek} loading={loading} />
+
+      {HOME_CONTENT_ROWS.map((row) => (
+        <MediaRow
+          key={row.title}
+          label={row.emoji}
+          title={row.title}
+          items={genreRows[row.title] ?? []}
+          loading={loading}
+          viewAllHref={`/search?genre=${encodeURIComponent(row.genre || row.title)}`}
+        />
+      ))}
+
       <MediaRow
         label="New"
         title="Latest Releases"
@@ -133,15 +135,10 @@ export function HomePage() {
         loading={loading}
         viewAllHref="/search?type=movie"
       />
-      <MediaRow
-        label="Top rated"
-        title="Highest Rated"
-        items={topRated}
-        loading={loading}
-      />
+
       <MediaRow
         label="For you"
-        title="Recommended"
+        title="You May Like"
         items={recommendations}
         loading={loading}
       />

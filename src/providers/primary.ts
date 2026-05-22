@@ -3,9 +3,10 @@ import { buildVidcoreUrl } from './vidcore';
 
 export const primaryProvider: Provider = {
   id: 'primary',
-  name: 'Primary',
+  name: 'VidCore',
   quality: 'HD',
-  description: 'Fast',
+  description: 'Primary embed · vidcore.net',
+  icon: 'server',
   getPlaybackSource: (ctx) =>
     buildVidcoreUrl(ctx, { server: 'primary' }),
 };

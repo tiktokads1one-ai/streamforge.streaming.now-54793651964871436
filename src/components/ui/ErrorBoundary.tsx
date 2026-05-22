@@ -26,7 +26,7 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         this.props.fallback ?? (
           <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4 px-6 text-center">
-            <h2 className="text-2xl font-semibold text-forge-glow">
+            <h2 className="text-2xl font-semibold text-accent-bright">
               Something went wrong
             </h2>
             <p className="max-w-md text-sm text-white/60">
@@ -34,7 +34,7 @@ export class ErrorBoundary extends Component<Props, State> {
             </p>
             <Link
               to="/"
-              className="rounded-full border border-forge-green/40 bg-forge-green/10 px-6 py-2 text-sm font-medium text-forge-glow shadow-glow-sm transition hover:bg-forge-green/20"
+              className="rounded-full border border-accent/40 bg-accent-muted px-6 py-2 text-sm font-medium text-accent-bright shadow-glow-sm transition hover:bg-accent/20"
             >
               Back to Home
             </Link>

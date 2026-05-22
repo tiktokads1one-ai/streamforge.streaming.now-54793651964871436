@@ -24,6 +24,9 @@ const FavoritesPage = lazy(() =>
 const HistoryPage = lazy(() =>
   import('@/pages/HistoryPage').then((m) => ({ default: m.HistoryPage })),
 );
+const ProviderPage = lazy(() =>
+  import('@/pages/ProviderPage').then((m) => ({ default: m.ProviderPage })),
+);
 
 function ProviderBootstrap() {
   const preferred = useLibraryStore((s) => s.playback.preferredProviderId);
@@ -53,6 +56,14 @@ export default function App() {
               element={
                 <Suspense fallback={<PageLoader />}>
                   <SearchPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="provider/:slug"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <ProviderPage />
                 </Suspense>
               }
             />

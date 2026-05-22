@@ -1,6 +1,7 @@
 import type { CastMember, MediaItem, MediaType } from '@/types/media';
 import { hasTmdbKey, tmdbFetch } from './tmdb';
 import { cinemetaCatalog, cinemetaMeta, type CinemetaMeta } from './cinemeta';
+import { GENRE_MAP } from './search';
 
 interface TmdbResult {
   id: number;
@@ -112,6 +113,95 @@ async function enrichWithGenres(items: TmdbResult[], type: MediaType): Promise<M
   });
 }
 
+async function enrichTrendingMixed(items: TmdbResult[]): Promise<MediaItem[]> {
+  return Promise.all(
+    items.map(async (item) => {
+      const type: MediaType = item.media_type === 'tv' ? 'tv' : 'movie';
+      const genreMap = await loadGenres(type);
+      const genres = (item.genre_ids ?? [])
+        .map((id) => genreMap.get(id))
+        .filter(Boolean) as string[];
+      return mapTmdbItem(item, type, genres);
+    }),
+  );
+}
+
+export async function fetchTrendingToday(page = 1): Promise<MediaItem[]> {
+  if (hasTmdbKey()) {
+    const data = await tmdbFetch<TmdbListResponse>('/trending/all/day', {
+      page: String(page),
+    });
+    return enrichTrendingMixed(data.results);
+  }
+  return fetchTrending('movie', page);
+}
+
+export async function fetchTrendingAllWeek(page = 1): Promise<MediaItem[]> {
+  if (hasTmdbKey()) {
+    const data = await tmdbFetch<TmdbListResponse>('/trending/all/week', {
+      page: String(page),
+    });
+    return enrichTrendingMixed(data.results);
+  }
+  return fetchTrending('movie', page);
+}
+
+export async function fetchDiscoverByGenre(
+  genreName: string,
+  mediaType: 'movie' | 'tv' = 'movie',
+  page = 1,
+): Promise<MediaItem[]> {
+  if (!hasTmdbKey()) {
+    return fetchTrending(mediaType === 'tv' ? 'tv' : 'movie', page);
+  }
+  const genreId = GENRE_MAP[genreName] ?? GENRE_MAP[genreName.replace('Sci-Fi', 'Science Fiction')];
+  const params: Record<string, string> = {
+    page: String(page),
+    sort_by: 'popularity.desc',
+  };
+  if (genreId) params.with_genres = String(genreId);
+  const data = await tmdbFetch<TmdbListResponse>(`/discover/${mediaType}`, params);
+  const forced: MediaType = mediaType === 'tv' ? 'tv' : 'movie';
+  return enrichWithGenres(data.results, forced);
+}
+
+export async function fetchAwardWinners(page = 1): Promise<MediaItem[]> {
+  if (!hasTmdbKey()) return fetchTopRated('movie', page);
+  const data = await tmdbFetch<TmdbListResponse>('/discover/movie', {
+    page: String(page),
+    sort_by: 'vote_average.desc',
+    'vote_average.gte': '7.8',
+    'vote_count.gte': '800',
+    'primary_release_date.lte': new Date().toISOString().slice(0, 10),
+  });
+  return enrichWithGenres(data.results, 'movie');
+}
+
+/** Horror discover biased toward zombie keyword when TMDB is available */
+export async function fetchZombiePicks(page = 1): Promise<MediaItem[]> {
+  if (!hasTmdbKey()) return fetchDiscoverByGenre('Horror', 'movie', page);
+  const data = await tmdbFetch<TmdbListResponse>('/discover/movie', {
+    page: String(page),
+    with_genres: '27',
+    with_keywords: '10292',
+    sort_by: 'popularity.desc',
+  });
+  return enrichWithGenres(data.results, 'movie');
+}
+
+export async function fetchSameGenre(
+  id: string,
+  type: MediaType,
+  limit = 12,
+): Promise<MediaItem[]> {
+  const detail = await fetchMediaDetails(id, type);
+  const primary = detail?.genres[0];
+  if (!primary) return fetchRecommendations(id, type);
+  const mediaType = type === 'tv' || type === 'anime' ? 'tv' : 'movie';
+  const items = await fetchDiscoverByGenre(primary, mediaType);
+  return items.filter((i) => i.id !== id).slice(0, limit);
+}
+
 export async function fetchTrending(type: MediaType = 'movie', page = 1): Promise<MediaItem[]> {
   if (hasTmdbKey()) {
     const tmdbType = mapTmdbType(type);
@@ -195,7 +285,7 @@ export async function fetchMediaDetails(
     });
     const genres = detail.genres?.map((g) => g.name) ?? [];
     const cast: CastMember[] =
-      detail.credits?.cast.slice(0, 12).map((c) => ({
+      detail.credits?.cast.slice(0, 24).map((c) => ({
         id: String(c.id),
         name: c.name,
         character: c.character,
@@ -263,6 +353,6 @@ export async function fetchRecommendations(
 }
 
 export async function fetchHeroItems(): Promise<MediaItem[]> {
-  const trending = await fetchTrending('movie', 1);
-  return trending.slice(0, 5);
+  const trending = await fetchTrendingToday(1);
+  return trending.filter((item) => item.backdropPath).slice(0, 6);
 }

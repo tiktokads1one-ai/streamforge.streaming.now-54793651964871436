@@ -71,14 +71,14 @@ export const GENRE_OPTIONS = Object.keys(GENRE_MAP).filter(
 );
 
 export const TRENDING_QUERIES = [
-  'Dune',
-  'Breaking Bad',
-  'One Piece',
-  'Marvel',
-  'Horror',
-  'Anime',
+  'Squid Game',
+  'Superman',
+  'Wednesday',
+  'Spider-Man',
   'Interstellar',
-  'Stranger Things',
+  'Breaking Bad',
+  'Naruto',
+  'Dune',
 ];
 
 function mapResult(item: TmdbSearchResult, forcedType?: MediaType): MediaItem {
@@ -197,7 +197,11 @@ export async function searchMediaPaginated(
 ): Promise<SearchPageResult> {
   const q = query.trim();
 
-  if (!q && filters.genre && hasTmdbKey()) {
+  if (
+    !q &&
+    (filters.genre || filters.year || filters.minRating > 0) &&
+    hasTmdbKey()
+  ) {
     const mediaType =
       filters.type === 'tv' || filters.type === 'anime' ? 'tv' : 'movie';
     return tmdbDiscover(mediaType, filters, page);

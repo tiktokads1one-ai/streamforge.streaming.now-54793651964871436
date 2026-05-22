@@ -1,0 +1,3123 @@
+Streaming Providers - TMDB API
+
+API Reference
+
+TV Seasons
+
+Streaming Providers
+
+Streaming Providers
+
+cURL
+
+```
+curl --request GET \
+  --url 'https://api.themoviedb.org/3/tv/{{series_id}}/season/{{season_number}}/watch/providers' \
+  --header 'Authorization: Bearer <token>'
+```
+
+200
+
+```
+{
+  "id": 287516,
+  "results": {
+    "AD": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AD"
+    },
+    "AE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AE"
+    },
+    "AG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AG"
+    },
+    "AL": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AL"
+    },
+    "AO": {
+      "flatrate": [
+        {
+          "display_priority": 4,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AO"
+    },
+    "AR": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AR"
+    },
+    "AT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AT"
+    },
+    "AU": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AU"
+    },
+    "AZ": {
+      "flatrate": [
+        {
+          "display_priority": 2,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AZ"
+    },
+    "BA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BA"
+    },
+    "BB": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BB"
+    },
+    "BE": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BE"
+    },
+    "BG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BG"
+    },
+    "BH": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BH"
+    },
+    "BM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BM"
+    },
+    "BO": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BO"
+    },
+    "BR": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 46,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BR"
+    },
+    "BS": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BS"
+    },
+    "BY": {
+      "flatrate": [
+        {
+          "display_priority": 5,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BY"
+    },
+    "BZ": {
+      "flatrate": [
+        {
+          "display_priority": 7,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BZ"
+    },
+    "CA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 110,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CA"
+    },
+    "CH": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CH"
+    },
+    "CI": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CI"
+    },
+    "CL": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CL"
+    },
+    "CM": {
+      "flatrate": [
+        {
+          "display_priority": 4,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CM"
+    },
+    "CO": {
+      "flatrate": [
+        {
+          "display_priority": 2,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CO"
+    },
+    "CR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CR"
+    },
+    "CU": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CU"
+    },
+    "CV": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CV"
+    },
+    "CY": {
+      "flatrate": [
+        {
+          "display_priority": 7,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CY"
+    },
+    "CZ": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CZ"
+    },
+    "DE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 103,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=DE"
+    },
+    "DK": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=DK"
+    },
+    "DO": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=DO"
+    },
+    "DZ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=DZ"
+    },
+    "EC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=EC"
+    },
+    "EE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=EE"
+    },
+    "EG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=EG"
+    },
+    "ES": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 63,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ES"
+    },
+    "FI": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=FI"
+    },
+    "FJ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=FJ"
+    },
+    "FR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 71,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=FR"
+    },
+    "GB": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 98,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GB"
+    },
+    "GG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GG"
+    },
+    "GH": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GH"
+    },
+    "GI": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GI"
+    },
+    "GQ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GQ"
+    },
+    "GR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GR"
+    },
+    "GT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GT"
+    },
+    "HK": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=HK"
+    },
+    "HN": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=HN"
+    },
+    "HR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=HR"
+    },
+    "HU": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=HU"
+    },
+    "ID": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ID"
+    },
+    "IE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IE"
+    },
+    "IL": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IL"
+    },
+    "IN": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IN"
+    },
+    "IQ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IQ"
+    },
+    "IS": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IS"
+    },
+    "IT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 64,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IT"
+    },
+    "JM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=JM"
+    },
+    "JO": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=JO"
+    },
+    "JP": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 27,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=JP"
+    },
+    "KE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=KE"
+    },
+    "KR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 28,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=KR"
+    },
+    "KW": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=KW"
+    },
+    "LB": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LB"
+    },
+    "LC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LC"
+    },
+    "LI": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LI"
+    },
+    "LT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LT"
+    },
+    "LU": {
+      "flatrate": [
+        {
+          "display_priority": 8,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LU"
+    },
+    "LV": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LV"
+    },
+    "LY": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LY"
+    },
+    "MA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MA"
+    },
+    "MC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MC"
+    },
+    "MD": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MD"
+    },
+    "ME": {
+      "flatrate": [
+        {
+          "display_priority": 4,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ME"
+    },
+    "MG": {
+      "flatrate": [
+        {
+          "display_priority": 4,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MG"
+    },
+    "MK": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MK"
+    },
+    "ML": {
+      "flatrate": [
+        {
+          "display_priority": 5,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ML"
+    },
+    "MT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MT"
+    },
+    "MU": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MU"
+    },
+    "MX": {
+      "flatrate": [
+        {
+          "display_priority": 8,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 46,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MX"
+    },
+    "MY": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MY"
+    },
+    "MZ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MZ"
+    },
+    "NE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NE"
+    },
+    "NG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NG"
+    },
+    "NI": {
+      "flatrate": [
+        {
+          "display_priority": 11,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NI"
+    },
+    "NL": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NL"
+    },
+    "NO": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NO"
+    },
+    "NZ": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NZ"
+    },
+    "OM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=OM"
+    },
+    "PA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PA"
+    },
+    "PE": {
+      "flatrate": [
+        {
+          "display_priority": 2,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PE"
+    },
+    "PF": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PF"
+    },
+    "PH": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PH"
+    },
+    "PK": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PK"
+    },
+    "PL": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PL"
+    },
+    "PS": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PS"
+    },
+    "PT": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PT"
+    },
+    "PY": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PY"
+    },
+    "QA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=QA"
+    },
+    "RO": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=RO"
+    },
+    "RS": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=RS"
+    },
+    "SA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SA"
+    },
+    "SC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SC"
+    },
+    "SE": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SE"
+    },
+    "SG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SG"
+    },
+    "SI": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SI"
+    },
+    "SK": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SK"
+    },
+    "SM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SM"
+    },
+    "SN": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SN"
+    },
+    "SV": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SV"
+    },
+    "TC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TC"
+    },
+    "TH": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TH"
+    },
+    "TN": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TN"
+    },
+    "TR": {
+      "flatrate": [
+        {
+          "display_priority": 3,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TR"
+    },
+    "TT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TT"
+    },
+    "TW": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TW"
+    },
+    "TZ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TZ"
+    },
+    "UA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=UA"
+    },
+    "UG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=UG"
+    },
+    "US": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 175,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=US"
+    },
+    "UY": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=UY"
+    },
+    "VE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=VE"
+    },
+    "YE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=YE"
+    },
+    "ZA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ZA"
+    },
+    "ZM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ZM"
+    },
+    "ZW": {
+      "flatrate": [
+        {
+          "display_priority": 5,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ZW"
+    }
+  }
+}
+```
+
+GET
+
+https://api.themoviedb.orgCollection
+
+/
+
+3
+
+/
+
+tv
+
+/
+
+{series_id}
+
+/
+
+season
+
+/
+
+{season_number}
+
+/
+
+watch
+
+/
+
+providers
+
+Try it
+
+Streaming Providers
+
+cURL
+
+```
+curl --request GET \
+  --url 'https://api.themoviedb.org/3/tv/{{series_id}}/season/{{season_number}}/watch/providers' \
+  --header 'Authorization: Bearer <token>'
+```
+
+200
+
+```
+{
+  "id": 287516,
+  "results": {
+    "AD": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AD"
+    },
+    "AE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AE"
+    },
+    "AG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AG"
+    },
+    "AL": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AL"
+    },
+    "AO": {
+      "flatrate": [
+        {
+          "display_priority": 4,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AO"
+    },
+    "AR": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AR"
+    },
+    "AT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AT"
+    },
+    "AU": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 52,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AU"
+    },
+    "AZ": {
+      "flatrate": [
+        {
+          "display_priority": 2,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=AZ"
+    },
+    "BA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BA"
+    },
+    "BB": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BB"
+    },
+    "BE": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BE"
+    },
+    "BG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BG"
+    },
+    "BH": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BH"
+    },
+    "BM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BM"
+    },
+    "BO": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BO"
+    },
+    "BR": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 46,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BR"
+    },
+    "BS": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BS"
+    },
+    "BY": {
+      "flatrate": [
+        {
+          "display_priority": 5,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BY"
+    },
+    "BZ": {
+      "flatrate": [
+        {
+          "display_priority": 7,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=BZ"
+    },
+    "CA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 110,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CA"
+    },
+    "CH": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CH"
+    },
+    "CI": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CI"
+    },
+    "CL": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CL"
+    },
+    "CM": {
+      "flatrate": [
+        {
+          "display_priority": 4,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CM"
+    },
+    "CO": {
+      "flatrate": [
+        {
+          "display_priority": 2,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CO"
+    },
+    "CR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CR"
+    },
+    "CU": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CU"
+    },
+    "CV": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CV"
+    },
+    "CY": {
+      "flatrate": [
+        {
+          "display_priority": 7,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CY"
+    },
+    "CZ": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=CZ"
+    },
+    "DE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 103,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=DE"
+    },
+    "DK": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=DK"
+    },
+    "DO": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=DO"
+    },
+    "DZ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=DZ"
+    },
+    "EC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=EC"
+    },
+    "EE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=EE"
+    },
+    "EG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=EG"
+    },
+    "ES": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 63,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ES"
+    },
+    "FI": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=FI"
+    },
+    "FJ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=FJ"
+    },
+    "FR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 71,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=FR"
+    },
+    "GB": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 98,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GB"
+    },
+    "GG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GG"
+    },
+    "GH": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GH"
+    },
+    "GI": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GI"
+    },
+    "GQ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GQ"
+    },
+    "GR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GR"
+    },
+    "GT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=GT"
+    },
+    "HK": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=HK"
+    },
+    "HN": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=HN"
+    },
+    "HR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=HR"
+    },
+    "HU": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=HU"
+    },
+    "ID": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ID"
+    },
+    "IE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IE"
+    },
+    "IL": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IL"
+    },
+    "IN": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IN"
+    },
+    "IQ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IQ"
+    },
+    "IS": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IS"
+    },
+    "IT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 64,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=IT"
+    },
+    "JM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=JM"
+    },
+    "JO": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=JO"
+    },
+    "JP": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 27,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=JP"
+    },
+    "KE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=KE"
+    },
+    "KR": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 28,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=KR"
+    },
+    "KW": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=KW"
+    },
+    "LB": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LB"
+    },
+    "LC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LC"
+    },
+    "LI": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LI"
+    },
+    "LT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LT"
+    },
+    "LU": {
+      "flatrate": [
+        {
+          "display_priority": 8,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LU"
+    },
+    "LV": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LV"
+    },
+    "LY": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=LY"
+    },
+    "MA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MA"
+    },
+    "MC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MC"
+    },
+    "MD": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MD"
+    },
+    "ME": {
+      "flatrate": [
+        {
+          "display_priority": 4,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ME"
+    },
+    "MG": {
+      "flatrate": [
+        {
+          "display_priority": 4,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MG"
+    },
+    "MK": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MK"
+    },
+    "ML": {
+      "flatrate": [
+        {
+          "display_priority": 5,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ML"
+    },
+    "MT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MT"
+    },
+    "MU": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MU"
+    },
+    "MX": {
+      "flatrate": [
+        {
+          "display_priority": 8,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 46,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MX"
+    },
+    "MY": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MY"
+    },
+    "MZ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=MZ"
+    },
+    "NE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NE"
+    },
+    "NG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NG"
+    },
+    "NI": {
+      "flatrate": [
+        {
+          "display_priority": 11,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NI"
+    },
+    "NL": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NL"
+    },
+    "NO": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NO"
+    },
+    "NZ": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=NZ"
+    },
+    "OM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=OM"
+    },
+    "PA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PA"
+    },
+    "PE": {
+      "flatrate": [
+        {
+          "display_priority": 2,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PE"
+    },
+    "PF": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PF"
+    },
+    "PH": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PH"
+    },
+    "PK": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PK"
+    },
+    "PL": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PL"
+    },
+    "PS": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PS"
+    },
+    "PT": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PT"
+    },
+    "PY": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=PY"
+    },
+    "QA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=QA"
+    },
+    "RO": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=RO"
+    },
+    "RS": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=RS"
+    },
+    "SA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SA"
+    },
+    "SC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SC"
+    },
+    "SE": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SE"
+    },
+    "SG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SG"
+    },
+    "SI": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SI"
+    },
+    "SK": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SK"
+    },
+    "SM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SM"
+    },
+    "SN": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SN"
+    },
+    "SV": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=SV"
+    },
+    "TC": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TC"
+    },
+    "TH": {
+      "flatrate": [
+        {
+          "display_priority": 1,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TH"
+    },
+    "TN": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TN"
+    },
+    "TR": {
+      "flatrate": [
+        {
+          "display_priority": 3,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TR"
+    },
+    "TT": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TT"
+    },
+    "TW": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TW"
+    },
+    "TZ": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=TZ"
+    },
+    "UA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=UA"
+    },
+    "UG": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=UG"
+    },
+    "US": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        },
+        {
+          "display_priority": 175,
+          "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+          "provider_id": 1796,
+          "provider_name": "Netflix basic with Ads"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=US"
+    },
+    "UY": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=UY"
+    },
+    "VE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=VE"
+    },
+    "YE": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=YE"
+    },
+    "ZA": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ZA"
+    },
+    "ZM": {
+      "flatrate": [
+        {
+          "display_priority": 0,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ZM"
+    },
+    "ZW": {
+      "flatrate": [
+        {
+          "display_priority": 5,
+          "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+          "provider_id": 8,
+          "provider_name": "Netflix"
+        }
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/season/2/watch?locale=ZW"
+    }
+  }
+}
+```
+
+#### Authorizations
+
+​
+
+Authorization
+
+string
+
+header
+
+required
+
+Bearer authentication header of the form`Bearer `, where` ` is your auth token.
+
+#### Path Parameters
+
+​
+
+series_id
+
+string
+
+required
+
+This represents the series ID. Get it [here](https://starlight.mintlify.app/api-reference/seriesid)
+
+​
+
+season_number
+
+string
+
+required
+
+This represents the season number of the TV show.
+
+#### Response
+
+200 - application/json
+
+Watch Providers
+
+​
+
+id
+
+number
+
+Example:
+
+`287516`
+
+​
+
+results
+
+object
+
+Show child attributes

@@ -21,8 +21,8 @@ export function GlassCard({
       onClick={onClick}
       className={`rounded-xl border bg-white/[0.04] backdrop-blur-md transition ${
         active
-          ? 'border-forge-green shadow-glow'
-          : 'border-white/10 hover:border-forge-green/40 hover:shadow-glow-sm'
+          ? 'border-accent/60 shadow-glow'
+          : 'border-white/10 hover:border-accent/40 hover:shadow-glow-sm'
       } ${onClick ? 'cursor-pointer' : ''} ${className}`}
     >
       {children}

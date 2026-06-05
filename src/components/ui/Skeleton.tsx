@@ -5,7 +5,7 @@ interface SkeletonProps {
 export function Skeleton({ className = '' }: SkeletonProps) {
   return (
     <div
-      className={`animate-shimmer rounded-xl bg-gradient-to-r from-surface-raised via-surface-card to-surface-raised bg-[length:200%_100%] ${className}`}
+      className={`animate-pulse rounded-xl bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 bg-[length:200%_100%] ${className}`}
       aria-hidden
     />
   );

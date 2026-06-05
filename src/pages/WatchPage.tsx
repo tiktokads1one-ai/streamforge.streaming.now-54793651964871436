@@ -128,7 +128,7 @@ export function WatchPage() {
       <section className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         <Link
           to={`/details/${media.id}?type=${media.mediaType}`}
-          className="mb-4 inline-block text-sm text-accent-bright hover:underline"
+          className="mb-4 inline-block text-sm text-purple-700 hover:underline"
         >
           ← Back to details
         </Link>
@@ -168,19 +168,19 @@ export function WatchPage() {
             </div>
 
             <div className="mt-6">
-              <h1 className="text-2xl font-bold sm:text-3xl">{media.title}</h1>
+              <h1 className="text-2xl font-bold sm:text-3xl text-gray-900">{media.title}</h1>
               {isSeries && (
-                <p className="mt-1 text-sm text-yellow-300">
+                <p className="mt-1 text-sm text-purple-700">
                   Season {season} · Episode {episode}
                 </p>
               )}
-              <p className="mt-2 flex flex-wrap gap-2 text-sm text-white/65">
+              <p className="mt-2 flex flex-wrap gap-2 text-sm text-gray-600">
                 {metaParts.map((part, i) => (
                   <span key={i} className="inline-flex items-center gap-2">
-                    {i > 0 && <span className="text-white/25">·</span>}
+                    {i > 0 && <span className="text-gray-300">·</span>}
                     <span
                       className={
-                        part.startsWith('★') ? 'font-semibold text-yellow-300' : ''
+                        part.startsWith('★') ? 'font-semibold text-purple-700' : ''
                       }
                     >
                       {part}
@@ -191,8 +191,8 @@ export function WatchPage() {
             </div>
 
             <section className="mt-8">
-              <h2 className="section-label mb-2">Overview</h2>
-              <p className="max-w-3xl text-sm leading-relaxed text-white/70 sm:text-base">
+              <h2 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Overview</h2>
+              <p className="max-w-3xl text-sm leading-relaxed text-gray-700 sm:text-base">
                 {media.overview || 'No overview available.'}
               </p>
             </section>
@@ -201,7 +201,7 @@ export function WatchPage() {
               <button
                 type="button"
                 onClick={() => setShowAutoNext(true)}
-                className="mt-6 rounded-full border border-yellow-500/40 px-5 py-2 text-sm font-medium text-yellow-200 hover:bg-yellow-500/10"
+                className="mt-6 rounded-full border border-purple-400 px-5 py-2 text-sm font-medium text-purple-700 hover:bg-purple-50"
               >
                 Next episode →
               </button>

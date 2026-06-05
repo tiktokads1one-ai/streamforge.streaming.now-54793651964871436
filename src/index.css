@@ -6,14 +6,6 @@
   html {
     scroll-behavior: smooth;
   }
-
-  body {
-    @apply min-h-screen bg-[#EDECF5] font-sans text-[#12131A] antialiased;
-  }
-
-  ::selection {
-    @apply bg-purple-500 text-white;
-  }
 }
 
 @layer utilities {

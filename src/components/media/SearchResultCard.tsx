@@ -17,7 +17,7 @@ export function SearchResultCard({ item }: SearchResultCardProps) {
         : 'Movie';
 
   return (
-    <article className="group relative flex w-full gap-4 rounded-2xl border border-white/[0.06] bg-surface-card/60 p-3 transition hover:border-accent/30 hover:bg-surface-hover sm:gap-5 sm:p-4">
+    <article className="group relative flex w-full gap-4 rounded-2xl border border-gray-200 bg-white p-3 transition hover:border-purple-300 hover:bg-purple-50 sm:gap-5 sm:p-4 shadow-sm">
       <Link
         to={`/details/${item.id}?type=${item.mediaType}`}
         className="relative h-[120px] w-20 shrink-0 overflow-hidden rounded-lg sm:h-[140px] sm:w-[95px]"
@@ -33,27 +33,27 @@ export function SearchResultCard({ item }: SearchResultCardProps) {
       <div className="flex min-w-0 flex-1 flex-col justify-center">
         <div className="mb-1 flex flex-wrap items-center gap-2">
           <RatingBadge rating={item.rating} size="sm" />
-          <span className="rounded-md bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/50">
+          <span className="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600">
             {type}
           </span>
         </div>
         <Link
           to={`/details/${item.id}?type=${item.mediaType}`}
-          className="text-base font-bold text-white hover:text-accent-bright sm:text-lg"
+          className="text-base font-bold text-gray-900 hover:text-purple-700 sm:text-lg"
         >
           {item.title}
         </Link>
-        <p className="mt-1 text-xs text-white/45 sm:text-sm">
+        <p className="mt-1 text-xs text-gray-500 sm:text-sm">
           {formatYear(item.releaseDate, item.year)}
           {item.genres[0] && (
             <>
-              <span className="meta-dot" />
+              <span className="mx-1 text-gray-300">·</span>
               {item.genres[0]}
             </>
           )}
         </p>
         {item.overview && (
-          <p className="mt-2 hidden line-clamp-2 text-sm text-white/55 sm:block">
+          <p className="mt-2 hidden line-clamp-2 text-sm text-gray-500 sm:block">
             {truncate(item.overview, 140)}
           </p>
         )}
@@ -62,13 +62,13 @@ export function SearchResultCard({ item }: SearchResultCardProps) {
       <div className="hidden shrink-0 flex-col justify-center gap-2 sm:flex">
         <Link
           to={`/details/${item.id}?type=${item.mediaType}`}
-          className="rounded-full border border-white/10 px-4 py-2 text-center text-xs font-medium text-white/70 transition hover:border-accent/50 hover:text-accent-bright"
+          className="rounded-full border border-gray-200 px-4 py-2 text-center text-xs font-medium text-gray-700 transition hover:border-purple-400 hover:text-purple-700"
         >
           Info
         </Link>
         <Link
           to={`/watch/${item.id}?type=${item.mediaType}`}
-          className="rounded-full bg-gradient-to-r from-purple-deep to-purple px-4 py-2 text-center text-xs font-bold text-white shadow-glow-sm transition hover:brightness-110"
+          className="rounded-full bg-gradient-to-r from-purple-800 to-purple-500 px-4 py-2 text-center text-xs font-bold text-white shadow-glow-sm transition hover:brightness-110"
         >
           Watch
         </Link>

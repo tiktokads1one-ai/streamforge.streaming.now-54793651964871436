@@ -78,7 +78,7 @@ export function MediaRow({
       {showLeft && (
         <button
           onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-24 w-14 bg-gradient-to-r from-zinc-900 via-zinc-900/85 to-transparent text-white text-3xl hover:from-zinc-800 transition-all duration-200"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-24 w-14 bg-gradient-to-r from-gray-50 via-gray-50/85 to-transparent text-gray-900 text-3xl hover:from-gray-100 transition-all duration-200"
         >
           ‹
         </button>
@@ -88,7 +88,7 @@ export function MediaRow({
       {showRight && (
         <button
           onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-24 w-14 bg-gradient-to-l from-zinc-900 via-zinc-900/85 to-transparent text-white text-3xl hover:from-zinc-800 transition-all duration-200"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-24 w-14 bg-gradient-to-l from-gray-50 via-gray-50/85 to-transparent text-gray-900 text-3xl hover:from-gray-100 transition-all duration-200"
         >
           ›
         </button>

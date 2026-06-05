@@ -47,13 +47,13 @@ export function EpisodeSidebar({
   }, [tmdbId, season]);
 
   return (
-    <aside className="glass-panel flex max-h-[min(70vh,640px)] flex-col overflow-hidden lg:sticky lg:top-24">
-      <div className="border-b border-white/[0.06] p-4">
-        <h3 className="text-sm font-bold text-white">Episodes</h3>
+    <aside className="bg-white border border-gray-200 rounded-2xl flex max-h-[min(70vh,640px)] flex-col overflow-hidden lg:sticky lg:top-24 shadow-sm">
+      <div className="border-b border-gray-200 p-4">
+        <h3 className="text-sm font-bold text-gray-900">Episodes</h3>
         <select
           value={season}
           onChange={(e) => onSeasonChange(Number(e.target.value))}
-          className="mt-2 w-full rounded-lg border border-white/10 bg-surface-raised px-3 py-2 text-sm text-white outline-none focus:border-yellow-500/50"
+          className="mt-2 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-purple-400"
         >
           {seasons.map((s) => (
             <option key={s.season_number} value={s.season_number}>
@@ -75,13 +75,13 @@ export function EpisodeSidebar({
                 onClick={() => onEpisodeSelect(ep.episode_number)}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm transition ${
                   active
-                    ? 'bg-yellow-500/20 text-yellow-100 ring-1 ring-yellow-500/40'
-                    : 'text-white/75 hover:bg-white/5'
+                    ? 'bg-purple-100 text-purple-900 ring-1 ring-purple-300'
+                    : 'text-gray-700 hover:bg-gray-50'
                 }`}
               >
                 <span
                   className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold ${
-                    active ? 'bg-yellow-600 text-white' : 'bg-white/10'
+                    active ? 'bg-purple-600 text-white' : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   {ep.episode_number}
@@ -91,7 +91,7 @@ export function EpisodeSidebar({
                     {ep.name || `Episode ${ep.episode_number}`}
                   </span>
                   {ep.runtime != null && ep.runtime > 0 && (
-                    <span className="text-[10px] text-white/40">
+                    <span className="text-[10px] text-gray-500">
                       {ep.runtime}m
                     </span>
                   )}
@@ -101,7 +101,7 @@ export function EpisodeSidebar({
           );
         })}
         {!episodes.length && (
-          <li className="px-3 py-6 text-center text-xs text-white/40">
+          <li className="px-3 py-6 text-center text-xs text-gray-500">
             Loading episodes…
           </li>
         )}

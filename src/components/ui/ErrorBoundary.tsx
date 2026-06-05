@@ -26,15 +26,15 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         this.props.fallback ?? (
           <div className="flex min-h-[50vh] flex-col items-center justify-center gap-4 px-6 text-center">
-            <h2 className="text-2xl font-semibold text-accent-bright">
+            <h2 className="text-2xl font-semibold text-purple-700">
               Something went wrong
             </h2>
-            <p className="max-w-md text-sm text-white/60">
+            <p className="max-w-md text-sm text-gray-600">
               We hit an unexpected error. Try refreshing or head back home.
             </p>
             <Link
               to="/"
-              className="rounded-full border border-accent/40 bg-accent-muted px-6 py-2 text-sm font-medium text-accent-bright shadow-glow-sm transition hover:bg-accent/20"
+              className="rounded-full border border-purple-400 bg-purple-50 px-6 py-2 text-sm font-medium text-purple-700 shadow-sm transition hover:bg-purple-100"
             >
               Back to Home
             </Link>

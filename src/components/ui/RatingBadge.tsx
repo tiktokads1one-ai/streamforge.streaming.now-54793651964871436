@@ -19,10 +19,10 @@ export function RatingBadge({
 
   return (
     <span
-      className={`rating-pill ${sizes[size]} ${className}`}
+      className={`inline-flex items-center gap-1 rounded-full bg-purple-100 text-purple-800 font-semibold ${sizes[size]} ${className}`}
       title={`Rating ${formatRating(rating)}`}
     >
-      <span className="text-accent-bright">★</span>
+      <span>★</span>
       {formatRating(rating)}
     </span>
   );

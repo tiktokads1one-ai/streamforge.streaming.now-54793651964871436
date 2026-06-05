@@ -337,8 +337,8 @@ export function SearchPage() {
     <>
       <Seo title="Search" description="Find movies, TV shows and anime on StreamForge." />
 
-      <header className="sticky top-[57px] z-40 border-b border-white/[0.06] bg-surface-base/95 px-4 py-6 backdrop-blur-xl sm:px-6 lg:px-8 isolate">
-        <h1 className="mb-4 text-2xl font-bold tracking-tight sm:text-3xl">
+      <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 px-4 py-6 backdrop-blur-xl sm:px-6 lg:px-8 isolate">
+        <h1 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
           Search
         </h1>
         <SearchInput
@@ -364,7 +364,11 @@ export function SearchPage() {
               key={tab.id}
               type="button"
               onClick={() => setFilters((f) => ({ ...f, type: tab.id }))}
-              className={`chip ${filters.type === tab.id ? 'chip-active' : ''}`}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                filters.type === tab.id
+                  ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
+                  : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
+              }`}
             >
               {tab.label}
             </button>
@@ -382,7 +386,11 @@ export function SearchPage() {
                   genre: f.genre === genre ? '' : genre,
                 }))
               }
-              className={`chip text-xs ${filters.genre === genre ? 'chip-active' : ''}`}
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                filters.genre === genre
+                  ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
+                  : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
+              }`}
             >
               {genre}
             </button>
@@ -400,7 +408,11 @@ export function SearchPage() {
                   year: f.year === year ? '' : year,
                 }))
               }
-              className={`chip text-xs ${filters.year === year ? 'chip-active' : ''}`}
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                filters.year === year
+                  ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
+                  : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
+              }`}
             >
               {year}
             </button>
@@ -412,7 +424,11 @@ export function SearchPage() {
               onClick={() =>
                 setFilters((f) => ({ ...f, minRating: chip.value }))
               }
-              className={`chip text-xs ${filters.minRating === chip.value ? 'chip-active' : ''}`}
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                filters.minRating === chip.value
+                  ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
+                  : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
+              }`}
             >
               {chip.label}
             </button>
@@ -428,7 +444,7 @@ export function SearchPage() {
                   minRating: 0,
                 }))
               }
-              className="text-xs text-accent-bright hover:underline"
+              className="text-xs text-purple-600 hover:underline"
             >
               Clear filters
             </button>
@@ -444,11 +460,11 @@ export function SearchPage() {
             {recent.length > 0 && (
               <section className="mb-8">
                 <div className="mb-3 flex items-center justify-between">
-                  <h2 className="text-sm font-semibold text-white/70">Recent searches</h2>
+                  <h2 className="text-sm font-semibold text-gray-600">Recent searches</h2>
                   <button
                     type="button"
                     onClick={() => { clearRecentSearches(); setRecent([]); }}
-                    className="text-xs text-white/40 hover:text-accent-bright"
+                    className="text-xs text-gray-400 hover:text-purple-600"
                   >
                     Clear
                   </button>
@@ -459,7 +475,7 @@ export function SearchPage() {
                       key={term}
                       type="button"
                       onClick={() => setQuery(term)}
-                      className="chip text-sm"
+                      className="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-purple-300"
                     >
                       {term}
                     </button>
@@ -468,26 +484,10 @@ export function SearchPage() {
               </section>
             )}
 
-            <section className="mb-8">
-              <h2 className="section-label mb-3">Trending searches</h2>
-              <div className="flex flex-wrap gap-2">
-                {TRENDING_QUERIES.map((term) => (
-                  <button
-                    key={term}
-                    type="button"
-                    onClick={() => setQuery(term)}
-                    className="chip hover:border-accent/40 hover:text-accent-bright"
-                  >
-                    🔥 {term}
-                  </button>
-                ))}
-              </div>
-            </section>
-
             <GenreBar />
 
             <section>
-              <SectionHeader label="Discover" title="Popular right now" />
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Popular right now</h2>
               {browseLoading ? (
                 <PageLoader />
               ) : (
@@ -512,10 +512,9 @@ export function SearchPage() {
         {/* Type browse — Movies / TV / Anime tab, no query */}
         {hasTypeBrowse && (
           <section>
-            <SectionHeader
-              label="Browse"
-              title={TYPE_TITLES[filters.type] ?? 'Browse'}
-            />
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              {TYPE_TITLES[filters.type] ?? 'Browse'}
+            </h2>
             {browseLoading ? (
               <PageLoader />
             ) : (
@@ -540,14 +539,14 @@ export function SearchPage() {
         {showResultList && (
           <section className="relative z-0 flex flex-col gap-3">
             {resultTitle && (
-              <p className="mb-1 text-sm text-white/50">{resultTitle}</p>
+              <p className="mb-1 text-sm text-gray-500">{resultTitle}</p>
             )}
             {loading ? (
               <PageLoader />
             ) : results.length === 0 ? (
-              <div className="glass-panel py-16 text-center">
-                <p className="text-lg font-semibold text-white">No results found</p>
-                <p className="mt-2 text-sm text-white/50">
+              <div className="bg-white border border-gray-200 rounded-xl py-16 text-center shadow-sm">
+                <p className="text-lg font-semibold text-gray-900">No results found</p>
+                <p className="mt-2 text-sm text-gray-500">
                   Try a different title, loosen filters, or browse genres below.
                 </p>
               </div>
@@ -562,7 +561,7 @@ export function SearchPage() {
               </div>
             )}
             {loadingMore && (
-              <p className="py-6 text-center text-sm text-white/40">Loading more…</p>
+              <p className="py-6 text-center text-sm text-gray-400">Loading more…</p>
             )}
             <div ref={sentinelRef} className="h-10 shrink-0" />
           </section>

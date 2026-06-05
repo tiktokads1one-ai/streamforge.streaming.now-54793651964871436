@@ -13,7 +13,7 @@ export function HistoryPage() {
       <Seo title="Watch History" description="Recently watched on StreamForge." />
       <section className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Watch History</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Watch History</h1>
           {history.length > 0 && (
            <Button variant="secondary" onClick={clearHistory}>
               Clear
@@ -21,14 +21,14 @@ export function HistoryPage() {
           )}
         </div>
         {history.length === 0 ? (
-          <p className="text-white/50">Nothing watched yet.</p>
+          <p className="text-gray-500">Nothing watched yet.</p>
         ) : (
           <ul className="space-y-3">
             {history.map((entry) => (
               <li key={`${entry.media.id}-${entry.watchedAt}`}>
                 <Link
                   to={`/details/${entry.media.id}?type=${entry.media.mediaType}`}
-                  className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-3 transition hover:border-accent/40"
+                  className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-3 transition hover:border-purple-400 shadow-sm"
                 >
                   <img
                     src={posterImage(entry.media.posterPath)}
@@ -37,8 +37,8 @@ export function HistoryPage() {
                     loading="lazy"
                   />
                   <span className="min-w-0 flex-1">
-                    <p className="font-medium">{entry.media.title}</p>
-                    <p className="text-xs text-white/50">
+                    <p className="font-medium text-gray-900">{entry.media.title}</p>
+                    <p className="text-xs text-gray-500">
                       {new Date(entry.watchedAt).toLocaleString()}
                     </p>
                   </span>

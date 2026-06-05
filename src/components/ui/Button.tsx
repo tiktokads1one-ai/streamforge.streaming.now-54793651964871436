@@ -22,8 +22,8 @@ export function Button({
         transition-all duration-300
         ${
           variant === "primary"
-            ? "bg-gradient-to-r from-purple-deep to-purple hover:shadow-glow-sm text-white"
-            : "bg-surface-card border border-purple-500/20 hover:bg-surface-hover text-white"
+            ? "bg-gradient-to-r from-purple-800 to-purple-600 hover:shadow-lg text-white"
+            : "bg-white border border-gray-200 hover:bg-gray-50 text-gray-900"
         }
         ${className}
       `}

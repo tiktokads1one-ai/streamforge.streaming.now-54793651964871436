@@ -52,7 +52,7 @@ export function DetailsHero({
                   <span
                     className={
                       part.startsWith('★')
-                        ? 'font-semibold text-yellow-300'
+                        ? 'font-semibold text-purple-300'
                         : ''
                     }
                   >
@@ -72,7 +72,7 @@ export function DetailsHero({
                   <Link
                     key={g}
                     to={`/search?genre=${encodeURIComponent(g)}`}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-sm transition hover:border-yellow-400/40 hover:text-yellow-200"
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-sm transition hover:border-purple-400/40 hover:text-purple-200"
                   >
                     {g}
                   </Link>
@@ -83,7 +83,7 @@ export function DetailsHero({
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to={`/watch/${media.id}?type=${media.mediaType}`}
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 px-8 py-3.5 text-sm font-bold text-black shadow-glow transition hover:brightness-110"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-800 to-purple-600 px-8 py-3.5 text-sm font-bold text-white shadow-glow transition hover:brightness-110"
               >
                 ▶ Watch Now
               </Link>
@@ -92,8 +92,8 @@ export function DetailsHero({
                 onClick={onToggleFavorite}
                 className={`inline-flex items-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold backdrop-blur-sm transition ${
                   isFavorite
-                    ? 'border-yellow-400/50 bg-yellow-500/20 text-yellow-200'
-                    : 'border-white/20 bg-black/30 text-white hover:border-yellow-400/40'
+                    ? 'border-purple-400/50 bg-purple-500/20 text-purple-200'
+                    : 'border-white/20 bg-black/30 text-white hover:border-purple-400/40'
                 }`}
               >
                 {isFavorite ? '❤️ Saved' : '🤍 Save'}

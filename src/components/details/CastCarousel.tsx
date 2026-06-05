@@ -13,7 +13,7 @@ export function CastCarousel({ cast }: CastCarouselProps) {
 
   return (
     <section className="mb-12">
-      <h2 className="section-label mb-4 px-4 sm:px-6 lg:px-8">Cast</h2>
+      <h2 className="text-sm font-semibold text-gray-600 mb-4 px-4 sm:px-6 lg:px-8 uppercase tracking-wider">Cast</h2>
       <div
         ref={scrollRef}
         className="flex gap-4 overflow-x-auto px-4 pb-2 scrollbar-hide sm:gap-5 sm:px-6 lg:px-8"
@@ -23,7 +23,7 @@ export function CastCarousel({ cast }: CastCarouselProps) {
             key={member.id}
             className="w-[100px] shrink-0 sm:w-[110px]"
           >
-            <div className="aspect-[2/3] overflow-hidden rounded-xl bg-surface-raised ring-1 ring-white/[0.06]">
+            <div className="aspect-[2/3] overflow-hidden rounded-xl bg-gray-100 ring-1 ring-gray-200">
               <img
                 src={profileImage(member.profilePath)}
                 alt={member.name}
@@ -32,11 +32,11 @@ export function CastCarousel({ cast }: CastCarouselProps) {
               />
             </div>
             <figcaption className="mt-2">
-              <p className="line-clamp-1 text-sm font-semibold text-white">
+              <p className="line-clamp-1 text-sm font-semibold text-gray-900">
                 {member.name}
               </p>
               {member.character && (
-                <p className="line-clamp-1 text-xs text-white/45">
+                <p className="line-clamp-1 text-xs text-gray-500">
                   {member.character}
                 </p>
               )}

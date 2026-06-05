@@ -45,11 +45,11 @@ export function ProviderPage() {
 
   if (!provider) {
     return (
-      <p className="px-6 py-20 text-center text-white/60">Provider not found.</p>
+      <p className="px-6 py-20 text-center text-gray-500">Provider not found.</p>
     );
   }
 
-  const bg = provider.brandColor ?? '#1a1a2e';
+  const bg = provider.brandColor ?? '#8B5CF6';
 
   return (
     <>
@@ -59,23 +59,23 @@ export function ProviderPage() {
       />
 
       <header
-        className="relative overflow-hidden border-b border-white/[0.06] px-4 py-14 sm:px-8"
+        className="relative overflow-hidden border-b border-gray-200 px-4 py-14 sm:px-8"
         style={{
-          background: `linear-gradient(135deg, ${bg}44 0%, transparent 55%)`,
+          background: `linear-gradient(135deg, ${bg}11 0%, transparent 55%)`,
         }}
       >
         <div className="mx-auto flex max-w-7xl items-center gap-6">
           <img
             src={watchProviderLogo(provider.logoPath, 'w500')}
             alt={provider.name}
-            className="h-24 w-24 rounded-2xl object-cover shadow-lg ring-1 ring-white/10 sm:h-28 sm:w-28"
+            className="h-24 w-24 rounded-2xl object-cover shadow-lg ring-1 ring-gray-200 sm:h-28 sm:w-28"
           />
           <div>
-            <h1 className="text-3xl font-extrabold sm:text-4xl">{provider.name}</h1>
-            <p className="mt-2 text-white/60">{provider.tagline}</p>
+            <h1 className="text-3xl font-extrabold sm:text-4xl text-gray-900">{provider.name}</h1>
+            <p className="mt-2 text-gray-600">{provider.tagline}</p>
             <Link
               to="/"
-              className="mt-4 inline-block text-sm text-yellow-300 hover:underline"
+              className="mt-4 inline-block text-sm text-purple-700 hover:underline"
             >
               ← Back home
             </Link>

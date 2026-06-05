@@ -76,8 +76,8 @@ export function DetailsPage() {
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <section className="mb-12">
-          <h2 className="section-label mb-3">Overview</h2>
-          <p className="max-w-4xl text-base leading-relaxed text-white/70 sm:text-lg">
+          <h2 className="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wider">Overview</h2>
+          <p className="max-w-4xl text-base leading-relaxed text-gray-700 sm:text-lg">
             {media.overview || 'No overview available.'}
           </p>
         </section>
@@ -86,7 +86,7 @@ export function DetailsPage() {
       <CastCarousel cast={media.cast} />
 
       <div className="mb-4 px-4 sm:px-6 lg:px-8">
-        <h2 className="section-title">You may also like</h2>
+        <h2 className="text-2xl font-bold text-gray-900">You may also like</h2>
       </div>
       <MediaRow label="Similar" title="Similar" items={similar} />
       <MediaRow label="Recommended" title="Recommended" items={recommendations} />

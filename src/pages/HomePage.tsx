@@ -1,153 +1,52 @@
-import { useEffect, useState, useMemo } from 'react';
-import { Seo } from '@/components/ui/Seo';
-import { HeroCarousel } from '@/components/media/HeroCarousel';
-import { MediaRow } from '@/components/media/MediaRow';
-import { Top10Row } from '@/components/media/Top10Row';
-import { GenreBar } from '@/components/media/GenreBar';
-import { WatchProvidersRow } from '@/components/media/WatchProvidersRow';
-import { HOME_CONTENT_ROWS } from '@/config/homeRows';
-import {
-  fetchAnime,
-  fetchAwardWinners,
-  fetchDiscoverByGenre,
-  fetchHeroItems,
-  fetchNewReleases,
-  fetchRecommendations,
-  fetchTrendingAllWeek,
-  fetchTrendingToday,
-  fetchZombiePicks,
-} from '@/services/media';
-import type { MediaItem } from '@/types/media';
-import { useLibraryStore } from '@/store/useLibraryStore';
-
-async function loadHomeRow(
-  row: (typeof HOME_CONTENT_ROWS)[number],
-): Promise<MediaItem[]> {
-  if (row.title === 'Award Winners') return fetchAwardWinners();
-  if (row.title === 'Zombie') return fetchZombiePicks();
-  if (row.title === 'Anime') return fetchAnime();
-  return fetchDiscoverByGenre(row.genre, row.mediaType ?? 'movie');
-}
+import { Link } from 'react-router-dom';
 
 export function HomePage() {
-  const continueWatching = useLibraryStore((s) => s.continueWatching);
-  const [hero, setHero] = useState<MediaItem[]>([]);
-  const [trendingToday, setTrendingToday] = useState<MediaItem[]>([]);
-  const [topWeek, setTopWeek] = useState<MediaItem[]>([]);
-  const [genreRows, setGenreRows] = useState<Record<string, MediaItem[]>>({});
-  const [newReleases, setNewReleases] = useState<MediaItem[]>([]);
-  const [recommendations, setRecommendations] = useState<MediaItem[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const [heroItems, today, week, releases] = await Promise.all([
-          fetchHeroItems(),
-          fetchTrendingToday(),
-          fetchTrendingAllWeek(),
-          fetchNewReleases(),
-        ]);
-        if (cancelled) return;
-        setHero(heroItems);
-        setTrendingToday(today);
-        setTopWeek(week);
-        setNewReleases(releases);
-
-        const rowResults = await Promise.all(
-          HOME_CONTENT_ROWS.map(async (row) => ({
-            key: row.title,
-            items: await loadHomeRow(row),
-          })),
-        );
-        if (!cancelled) {
-          setGenreRows(
-            Object.fromEntries(rowResults.map((r) => [r.key, r.items])),
-          );
-        }
-
-        const recSource = heroItems[0] ?? today[0];
-        if (recSource && !cancelled) {
-          const recs = await fetchRecommendations(
-            recSource.id,
-            recSource.mediaType,
-          );
-          if (!cancelled) setRecommendations(recs);
-        }
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const progressMap = useMemo(
-    () =>
-      Object.fromEntries(
-        continueWatching.map((c) => [
-          c.media.id,
-          (c.progress / Math.max(c.duration, 1)) * 100,
-        ]),
-      ),
-    [continueWatching]
-  );
-
   return (
-    <>
-      <Seo />
-      <HeroCarousel items={hero} loading={loading} />
-      <GenreBar />
-      <WatchProvidersRow />
-
-      <div className="max-w-[1280px] mx-auto">
-        {continueWatching.length > 0 && (
-          <MediaRow
-            label="Your queue"
-            title="Continue Watching"
-            items={continueWatching.map((c) => c.media)}
-            progressMap={progressMap}
-          />
-        )}
-
-        <MediaRow
-          label="🔥 Trending"
-          title="Trending Today"
-          items={trendingToday}
-          loading={loading}
-          viewAllHref="/search?q=trending"
-        />
-
-        <Top10Row items={topWeek} loading={loading} />
-
-        {HOME_CONTENT_ROWS.map((row) => (
-          <MediaRow
-            key={row.title}
-            label={row.emoji}
-            title={row.title}
-            items={genreRows[row.title] ?? []}
-            loading={loading}
-            viewAllHref={`/search?genre=${encodeURIComponent(row.genre || row.title)}`}
-          />
-        ))}
-
-        <MediaRow
-          label="New"
-          title="Latest Releases"
-          items={newReleases}
-          loading={loading}
-          viewAllHref="/search?type=movie"
-        />
-
-        <MediaRow
-          label="For you"
-          title="You May Like"
-          items={recommendations}
-          loading={loading}
-        />
+    <div className="min-h-screen">
+      {/* Hero Badge */}
+      <div className="flex justify-center pt-10">
+        <div className="inline-flex items-center gap-2 bg-white rounded-full px-3 py-1 shadow-sm">
+          <span className="bg-gradient-to-r from-purple-deep to-purple text-white text-xs font-bold px-3 py-1 rounded-full">
+            FREE STREAMING
+          </span>
+          <span className="text-xs text-gray-600">
+            Watch thousands of Movies, TV Shows &amp; Anime completely free.
+          </span>
+        </div>
       </div>
-    </>
+
+      {/* Hero Section */}
+      <div className="max-w-5xl mx-auto px-4 pt-16 pb-32">
+        <div className="text-center">
+          {/* Headline */}
+          <h1 className="text-6xl md:text-8xl font-black leading-tight">
+            <div>Stream without</div>
+            <div className="text-gradient">Limits.</div>
+          </h1>
+
+          {/* Subtitle */}
+          <div className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p>Watch movies, anime, TV shows and more in one place.</p>
+            <p className="mt-2">Built for speed, quality and unlimited entertainment.</p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="mt-10 flex items-center justify-center gap-4">
+            <Link
+              to="/search?type=movie"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-deep to-purple text-white font-bold px-8 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all"
+            >
+              ▶ Start Watching
+            </Link>
+            <Link
+              to="/search"
+              className="inline-flex items-center gap-2 text-gray-700 font-semibold hover:text-purple-deep transition-colors"
+            >
+              Browse Library →
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

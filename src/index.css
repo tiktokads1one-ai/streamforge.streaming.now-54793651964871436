@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply min-h-screen bg-[#0F0F17] font-sans text-white antialiased;
+    @apply min-h-screen bg-[#EDECF5] font-sans text-[#12131A] antialiased;
   }
 
   ::selection {
@@ -16,83 +16,18 @@
   }
 }
 
-@layer components {
-  .section-label {
-    @apply text-[11px] font-bold uppercase tracking-[0.22em] text-purple-400 mb-1;
-  }
-
-  .section-title {
-    @apply text-xl sm:text-2xl font-extrabold tracking-tight text-white;
-  }
-
-  .glass-panel {
-    @apply rounded-xl border border-purple-500/10 bg-surface-card/80 backdrop-blur-xl shadow-lg;
-  }
-
-  .chip {
-    @apply inline-flex shrink-0 items-center rounded-full border border-purple-500/20 bg-surface-card px-4 py-1.5 text-[13px] font-medium text-white transition-all duration-200 hover:border-purple-400/50 hover:bg-surface-hover;
-  }
-
-  .chip-active {
-    @apply border-purple-400 bg-purple-400/20 text-purple-300;
-  }
-
-  .input-search {
-    @apply w-full rounded-full border border-purple-500/20 bg-surface-card py-3.5 pl-12 pr-5 text-base text-white placeholder:text-zinc-500 outline-none transition-all duration-200 focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20;
-  }
-
-  .rating-pill {
-    @apply inline-flex items-center gap-1 rounded-lg bg-purple-400/20 px-2.5 py-1 text-sm font-extrabold text-purple-300 ring-1 ring-purple-400/30;
-  }
-
-  .meta-dot::before {
-    content: ' • ';
-    @apply text-zinc-500;
-  }
-}
-
 @layer utilities {
+  .text-gradient {
+    background: linear-gradient(90deg, #8B5CF6 0%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #161622;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #6D28D9, #8B5CF6);
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #5B21B6, #7C3AED);
-  }
-
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .providers-track {
-    animation: marquee 30s linear infinite;
-  }
-  .providers-marquee:hover .providers-track {
-    animation-play-state: paused;
-  }
-  
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
   }
 }

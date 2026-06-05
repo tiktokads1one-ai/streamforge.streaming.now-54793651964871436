@@ -1,19 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from './Navbar';
-import { Footer } from './Footer';
-import { MobileNav } from './MobileNav';
 
 export function Layout() {
   return (
-    <>
+    <div>
       <Navbar />
-
-      <main className="min-h-screen pb-20 md:pb-0">
+      <main>
         <Outlet />
       </main>
-
-      <Footer />
-      <MobileNav />
-    </>
+    </div>
   );
 }

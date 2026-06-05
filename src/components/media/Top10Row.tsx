@@ -43,14 +43,14 @@ export function Top10Row({ items, loading }: Top10RowProps) {
               style={{ scrollSnapAlign: 'start' }}
             >
               <span
-                className="pointer-events-none absolute -left-1 bottom-6 z-0 select-none font-black leading-none tracking-tighter text-white/[0.12] transition group-hover:text-white/[0.18]"
+                className="pointer-events-none absolute -left-1 bottom-6 z-0 select-none font-black leading-none tracking-tighter text-purple-400/20 transition group-hover:text-purple-300/25"
                 style={{ fontSize: 'clamp(5rem, 12vw, 7.5rem)' }}
                 aria-hidden
               >
                 {rank}
               </span>
               <div className="relative z-10 ml-8 w-full transition duration-300 group-hover:scale-[1.04]">
-                <div className="aspect-[2/3] overflow-hidden rounded-lg shadow-poster ring-1 ring-white/10">
+                <div className="aspect-[2/3] overflow-hidden rounded-lg shadow-poster ring-1 ring-purple-500/10">
                   <img
                     src={posterImage(item.posterPath)}
                     alt={item.title}

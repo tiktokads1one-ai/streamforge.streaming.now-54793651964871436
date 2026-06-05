@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Seo } from '@/components/ui/Seo';
 import { HeroCarousel } from '@/components/media/HeroCarousel';
 import { MediaRow } from '@/components/media/MediaRow';
@@ -84,11 +84,15 @@ export function HomePage() {
     };
   }, []);
 
-  const progressMap = Object.fromEntries(
-    continueWatching.map((c) => [
-      c.media.id,
-      (c.progress / Math.max(c.duration, 1)) * 100,
-    ]),
+  const progressMap = useMemo(
+    () =>
+      Object.fromEntries(
+        continueWatching.map((c) => [
+          c.media.id,
+          (c.progress / Math.max(c.duration, 1)) * 100,
+        ]),
+      ),
+    [continueWatching]
   );
 
   return (
@@ -98,50 +102,52 @@ export function HomePage() {
       <GenreBar />
       <WatchProvidersRow />
 
-      {continueWatching.length > 0 && (
+      <div className="max-w-[1280px] mx-auto">
+        {continueWatching.length > 0 && (
+          <MediaRow
+            label="Your queue"
+            title="Continue Watching"
+            items={continueWatching.map((c) => c.media)}
+            progressMap={progressMap}
+          />
+        )}
+
         <MediaRow
-          label="Your queue"
-          title="Continue Watching"
-          items={continueWatching.map((c) => c.media)}
-          progressMap={progressMap}
-        />
-      )}
-
-      <MediaRow
-        label="🔥 Trending"
-        title="Trending Today"
-        items={trendingToday}
-        loading={loading}
-        viewAllHref="/search?q=trending"
-      />
-
-      <Top10Row items={topWeek} loading={loading} />
-
-      {HOME_CONTENT_ROWS.map((row) => (
-        <MediaRow
-          key={row.title}
-          label={row.emoji}
-          title={row.title}
-          items={genreRows[row.title] ?? []}
+          label="🔥 Trending"
+          title="Trending Today"
+          items={trendingToday}
           loading={loading}
-          viewAllHref={`/search?genre=${encodeURIComponent(row.genre || row.title)}`}
+          viewAllHref="/search?q=trending"
         />
-      ))}
 
-      <MediaRow
-        label="New"
-        title="Latest Releases"
-        items={newReleases}
-        loading={loading}
-        viewAllHref="/search?type=movie"
-      />
+        <Top10Row items={topWeek} loading={loading} />
 
-      <MediaRow
-        label="For you"
-        title="You May Like"
-        items={recommendations}
-        loading={loading}
-      />
+        {HOME_CONTENT_ROWS.map((row) => (
+          <MediaRow
+            key={row.title}
+            label={row.emoji}
+            title={row.title}
+            items={genreRows[row.title] ?? []}
+            loading={loading}
+            viewAllHref={`/search?genre=${encodeURIComponent(row.genre || row.title)}`}
+          />
+        ))}
+
+        <MediaRow
+          label="New"
+          title="Latest Releases"
+          items={newReleases}
+          loading={loading}
+          viewAllHref="/search?type=movie"
+        />
+
+        <MediaRow
+          label="For you"
+          title="You May Like"
+          items={recommendations}
+          loading={loading}
+        />
+      </div>
     </>
   );
 }

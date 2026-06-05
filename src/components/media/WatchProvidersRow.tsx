@@ -36,7 +36,7 @@ function ProviderTile({ provider }: { provider: WatchProvider }) {
         >
           {provider.name.slice(0, 2).toUpperCase()}
         </span>
-        <span className="line-clamp-2 max-w-[100px] text-center text-[10px] font-medium leading-tight text-white/50">
+        <span className="line-clamp-2 max-w-[100px] text-center text-[10px] font-medium leading-tight text-white/50 transition group-hover:text-yellow-200">
           {provider.name}
         </span>
       </Link>
@@ -74,7 +74,7 @@ function ProviderTile({ provider }: { provider: WatchProvider }) {
           }}
         />
       </span>
-      <span className="line-clamp-2 max-w-[100px] text-center text-[10px] font-medium leading-tight text-white/50 transition group-hover:text-violet-200">
+      <span className="line-clamp-2 max-w-[100px] text-center text-[10px] font-medium leading-tight text-white/50 transition group-hover:text-yellow-200">
         {provider.name}
       </span>
     </Link>
@@ -118,7 +118,7 @@ export function WatchProvidersRow() {
           </h2>
           <Link
             to="/search"
-            className="mt-1 inline-block text-sm font-semibold uppercase tracking-wide text-accent-bright hover:underline"
+            className="mt-1 inline-block text-sm font-semibold uppercase tracking-wide text-yellow-300 hover:underline"
           >
             View all
           </Link>
@@ -126,8 +126,8 @@ export function WatchProvidersRow() {
       </div>
 
       <div className="providers-marquee group relative overflow-hidden py-1">
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-surface-base to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-surface-base to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-zinc-900 to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-zinc-900 to-transparent" />
 
         <div className="providers-track flex w-max items-center gap-5 px-4 sm:gap-6 sm:px-6 lg:px-8">
           {loop.map((p, i) => (

@@ -68,7 +68,7 @@ export function SearchResultCard({ item }: SearchResultCardProps) {
         </Link>
         <Link
           to={`/watch/${item.id}?type=${item.mediaType}`}
-          className="rounded-full bg-gradient-to-r from-violet-600 to-indigo-500 px-4 py-2 text-center text-xs font-bold text-white shadow-glow-sm transition hover:brightness-110"
+          className="rounded-full bg-gradient-to-r from-purple-deep to-purple px-4 py-2 text-center text-xs font-bold text-white shadow-glow-sm transition hover:brightness-110"
         >
           Watch
         </Link>

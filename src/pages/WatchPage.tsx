@@ -170,7 +170,7 @@ export function WatchPage() {
             <div className="mt-6">
               <h1 className="text-2xl font-bold sm:text-3xl">{media.title}</h1>
               {isSeries && (
-                <p className="mt-1 text-sm text-violet-300">
+                <p className="mt-1 text-sm text-yellow-300">
                   Season {season} · Episode {episode}
                 </p>
               )}
@@ -180,7 +180,7 @@ export function WatchPage() {
                     {i > 0 && <span className="text-white/25">·</span>}
                     <span
                       className={
-                        part.startsWith('★') ? 'font-semibold text-violet-300' : ''
+                        part.startsWith('★') ? 'font-semibold text-yellow-300' : ''
                       }
                     >
                       {part}
@@ -201,7 +201,7 @@ export function WatchPage() {
               <button
                 type="button"
                 onClick={() => setShowAutoNext(true)}
-                className="mt-6 rounded-full border border-violet-500/40 px-5 py-2 text-sm font-medium text-violet-200 hover:bg-violet-500/10"
+                className="mt-6 rounded-full border border-yellow-500/40 px-5 py-2 text-sm font-medium text-yellow-200 hover:bg-yellow-500/10"
               >
                 Next episode →
               </button>

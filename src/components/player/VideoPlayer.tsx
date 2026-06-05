@@ -74,7 +74,7 @@ export function VideoPlayer({
 
   return (
     <motion.section>
-      <motion.div className="relative aspect-video overflow-hidden rounded-2xl border border-violet-500/25 bg-black shadow-[0_0_40px_rgba(99,102,241,0.15)] sm:rounded-3xl">
+      <motion.div className="relative aspect-video overflow-hidden rounded-2xl border border-yellow-500/25 bg-black shadow-[0_0_40px_rgba(255,215,0,0.15)] sm:rounded-3xl">
         <iframe
           key={`${media.id}-${season}-${episode}-${providerKey}-${source}`}
           src={source}
@@ -92,9 +92,9 @@ export function VideoPlayer({
         />
 
         {loading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/90 text-violet-300">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/90 text-yellow-300">
             <motion.div
-              className="h-10 w-10 rounded-full border-2 border-violet-500/30 border-t-violet-400"
+              className="h-10 w-10 rounded-full border-2 border-yellow-500/30 border-t-yellow-400"
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 0.8, ease: 'linear' }}
             />

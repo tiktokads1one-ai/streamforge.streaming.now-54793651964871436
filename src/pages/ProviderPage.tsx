@@ -75,7 +75,7 @@ export function ProviderPage() {
             <p className="mt-2 text-white/60">{provider.tagline}</p>
             <Link
               to="/"
-              className="mt-4 inline-block text-sm text-violet-300 hover:underline"
+              className="mt-4 inline-block text-sm text-yellow-300 hover:underline"
             >
               ← Back home
             </Link>

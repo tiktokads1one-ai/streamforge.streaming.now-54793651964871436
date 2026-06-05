@@ -22,8 +22,8 @@ export function Button({
         transition-all duration-300
         ${
           variant === "primary"
-            ? "bg-indigo-500 hover:bg-indigo-600 text-white"
-            : "bg-white/10 border border-white/10 hover:bg-white/20 text-white"
+            ? "bg-gradient-to-r from-purple-deep to-purple hover:shadow-glow-sm text-white"
+            : "bg-surface-card border border-purple-500/20 hover:bg-surface-hover text-white"
         }
         ${className}
       `}

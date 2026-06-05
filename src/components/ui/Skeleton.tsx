@@ -5,7 +5,7 @@ interface SkeletonProps {
 export function Skeleton({ className = '' }: SkeletonProps) {
   return (
     <div
-      className={`animate-shimmer rounded-lg bg-gradient-to-r from-white/5 via-white/10 to-white/5 bg-[length:200%_100%] ${className}`}
+      className={`animate-shimmer rounded-xl bg-gradient-to-r from-surface-raised via-surface-card to-surface-raised bg-[length:200%_100%] ${className}`}
       aria-hidden
     />
   );
@@ -17,9 +17,9 @@ export function PosterSkeleton() {
 
 export function RowSkeleton({ count = 6 }: { count?: number }) {
   return (
-    <div className="flex gap-3 overflow-hidden px-4 sm:px-6">
+    <div className="flex gap-4 overflow-hidden px-6 sm:px-8">
       {Array.from({ length: count }).map((_, i) => (
-        <Skeleton key={i} className="h-44 w-28 shrink-0 sm:h-52 sm:w-36" />
+        <Skeleton key={i} className="h-56 w-40 shrink-0 sm:h-64 sm:w-44" />
       ))}
     </div>
   );

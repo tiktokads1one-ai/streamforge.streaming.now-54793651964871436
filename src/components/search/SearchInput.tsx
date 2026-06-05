@@ -35,7 +35,7 @@ export function SearchInput({
 
   return (
     <motion.div className="relative">
-      <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/35">
+      <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-purple-400/60">
         <svg
           className="h-5 w-5"
           fill="none"
@@ -82,7 +82,7 @@ export function SearchInput({
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="absolute left-0 right-0 top-[calc(100%+8px)] z-[60] max-h-[min(480px,65vh)] overflow-y-auto rounded-2xl border border-violet-500/20 bg-surface-raised p-2 shadow-[0_16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl"
+            className="absolute left-0 right-0 top-[calc(100%+8px)] z-[60] max-h-[min(480px,65vh)] overflow-y-auto rounded-2xl border border-purple-500/20 bg-surface-raised p-2 shadow-[0_16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl"
           >
             {suggestions.map((item) => (
               <li key={`${item.mediaType}-${item.id}`}>
@@ -95,7 +95,7 @@ export function SearchInput({
                   <img
                     src={posterImage(item.posterPath, 'w342')}
                     alt=""
-                    className="h-[72px] w-[48px] shrink-0 rounded-lg object-cover shadow-md ring-1 ring-white/10"
+                    className="h-[72px] w-[48px] shrink-0 rounded-lg object-cover shadow-md ring-1 ring-purple-500/10"
                   />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-medium text-white">
@@ -115,7 +115,7 @@ export function SearchInput({
                 type="button"
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={onSubmit}
-                className="w-full text-center text-sm font-medium text-accent-bright hover:underline"
+                className="w-full text-center text-sm font-medium text-purple-300 hover:underline"
               >
                 See all results for &quot;{value}&quot;
               </button>

@@ -44,14 +44,14 @@ export function AutoNextOverlay({
   return (
     <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/80 backdrop-blur-sm">
       <div className="glass-panel max-w-sm px-8 py-10 text-center">
-        <p className="text-sm font-medium uppercase tracking-wider text-violet-300">
+        <p className="text-sm font-medium uppercase tracking-wider text-yellow-300">
           Up next
         </p>
         <p className="mt-2 text-lg font-bold text-white">
           S{nextSeason} · E{nextEpisode}
         </p>
         <p
-          className="mt-6 text-6xl font-black tabular-nums text-violet-400"
+          className="mt-6 text-6xl font-black tabular-nums text-yellow-400"
           aria-live="polite"
         >
           {count}
@@ -61,7 +61,7 @@ export function AutoNextOverlay({
           <button
             type="button"
             onClick={onPlayNext}
-            className="rounded-full bg-gradient-to-r from-violet-600 to-indigo-500 px-6 py-2.5 text-sm font-bold text-white"
+            className="rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 px-6 py-2.5 text-sm font-bold text-black"
           >
             Play now
           </button>
@@ -75,7 +75,7 @@ export function AutoNextOverlay({
         </div>
         <Link
           to={`/details/${mediaId}?type=${mediaType}`}
-          className="mt-4 inline-block text-xs text-white/40 hover:text-violet-300"
+          className="mt-4 inline-block text-xs text-white/40 hover:text-yellow-300"
         >
           Back to details
         </Link>

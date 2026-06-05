@@ -1,17 +1,17 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const nav = [
   { to: '/', label: 'Home', end: true },
-  { to: '/search', label: 'Search', exact: true },
   { to: '/search?type=movie', label: 'Movies', typeParam: 'movie' },
   { to: '/search?type=tv', label: 'TV', typeParam: 'tv' },
-  { to: '/favorites', label: 'Saved' },
+  { to: '/search?type=anime', label: 'Anime', typeParam: 'anime' },
+  { to: '/favorites', label: 'Favorites' },
 ];
 
 export function Navbar() {
   const [q, setQ] = useState('');
+  const [searchExpanded, setSearchExpanded] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const currentType = new URLSearchParams(location.search).get('type');
@@ -19,7 +19,10 @@ export function Navbar() {
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = q.trim();
-    navigate(trimmed ? `/search?q=${encodeURIComponent(trimmed)}` : '/search');
+    if (trimmed) {
+      navigate(`/search?q=${encodeURIComponent(trimmed)}`);
+    }
+    setSearchExpanded(false);
   };
 
   function isActive(item: (typeof nav)[number]): boolean {
@@ -27,73 +30,84 @@ export function Navbar() {
     if ('typeParam' in item && item.typeParam) {
       return location.pathname === '/search' && currentType === item.typeParam;
     }
-    if ('exact' in item && item.exact) {
-      return location.pathname === '/search' && !currentType;
-    }
     return location.pathname.startsWith(item.to);
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-surface-base/90 backdrop-blur-2xl">
-      <nav className="mx-auto flex max-w-[1600px] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link to="/" className="shrink-0">
-          <span className="text-xl font-extrabold tracking-tight">
-            STREAM<span className="text-accent-bright">FORGE</span>
+    <header className="sticky top-0 z-50 py-4 bg-surface-base/95 backdrop-blur-2xl border-b border-purple-500/10 shadow-xl">
+      <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-4 sm:px-8">
+        <Link to="/" className="shrink-0 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-deep to-purple flex items-center justify-center shadow-glow border border-purple-300/50">
+            <span className="text-2xl font-black text-white">S</span>
+          </div>
+          <span className="text-3xl font-black tracking-tighter text-white drop-shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+            StreamForge
           </span>
         </Link>
 
-        <form
-          onSubmit={submitSearch}
-          className="hidden min-w-0 flex-1 max-w-xl md:block"
-        >
-          <div className="relative">
-            <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-white/30">
-              ⌕
-            </span>
-            <input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Quick search…"
-              className="w-full rounded-full border border-white/10 bg-surface-raised py-2 pl-9 pr-4 text-sm outline-none transition focus:border-accent/40 focus:ring-2 focus:ring-accent/15"
-            />
-          </div>
-        </form>
-
-        <motion.ul className="hidden items-center gap-0.5 lg:flex">
+        <ul className="hidden md:flex items-center gap-1">
           {nav.map((item) => (
             <li key={item.to}>
               <Link
                 to={item.to}
-                className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
+                className={`px-5 py-3 text-base font-semibold transition-all duration-200 rounded-xl ${
                   isActive(item)
-                    ? 'bg-accent-muted text-accent-bright'
-                    : 'text-white/55 hover:text-white'
+                    ? 'text-purple-300 bg-purple-400/10'
+                    : 'text-white/75 hover:text-white hover:bg-surface-card'
                 }`}
               >
                 {item.label}
               </Link>
             </li>
           ))}
-        </motion.ul>
+        </ul>
 
-        <a
-          href="https://discord.gg/ujBH8GjuaY"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden items-center gap-1.5 rounded-full border border-[#5865F2]/40 bg-[#5865F2]/10 px-3.5 py-2 text-sm font-medium text-[#7289da] transition hover:bg-[#5865F2]/20 hover:text-white lg:flex"
-        >
-          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.031.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
-          </svg>
-          Discord
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://discord.gg/5K3zwXWpaV"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-surface-card border border-purple-500/20 px-5 py-2.5 text-white flex items-center gap-2 hover:border-purple-400/50 hover:bg-surface-hover transition-all duration-300 font-semibold text-sm hidden sm:flex"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.0765.0765 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.0766.0766 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z" />
+            </svg>
+            Discord
+          </a>
+          <div className="hidden sm:block">
+            {searchExpanded ? (
+              <form
+                onSubmit={submitSearch}
+                className="flex items-center gap-3 bg-surface-card rounded-full border border-purple-500/20 px-5 py-2.5 hover:border-purple-400/30 transition-all duration-300"
+              >
+                <span className="text-purple-400 text-lg">🔍</span>
+                <input
+                  autoFocus
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                  placeholder="Search movies, TV, anime…"
+                  className="bg-transparent text-white text-sm outline-none placeholder:text-zinc-500 min-w-[250px]"
+                />
+                <button
+                  type="button"
+                  onClick={() => setSearchExpanded(false)}
+                  className="text-zinc-400 hover:text-white text-lg"
+                >
+                  ✕
+                </button>
+              </form>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setSearchExpanded(true)}
+                className="rounded-full bg-surface-card border border-purple-500/20 px-6 py-2.5 text-white flex items-center gap-2 hover:border-purple-400/50 transition-all duration-300 font-semibold text-sm"
+              >
+                🔍 Search
+              </button>
+            )}
+          </div>
 
-        <Link
-          to="/search"
-          className="rounded-full border border-white/10 px-3 py-2 text-sm md:hidden"
-        >
-          Search
-        </Link>
+        </div>
       </nav>
     </header>
   );

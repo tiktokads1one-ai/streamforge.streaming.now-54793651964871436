@@ -53,7 +53,7 @@ export function EpisodeSidebar({
         <select
           value={season}
           onChange={(e) => onSeasonChange(Number(e.target.value))}
-          className="mt-2 w-full rounded-lg border border-white/10 bg-surface-raised px-3 py-2 text-sm text-white outline-none focus:border-violet-500/50"
+          className="mt-2 w-full rounded-lg border border-white/10 bg-surface-raised px-3 py-2 text-sm text-white outline-none focus:border-yellow-500/50"
         >
           {seasons.map((s) => (
             <option key={s.season_number} value={s.season_number}>
@@ -75,13 +75,13 @@ export function EpisodeSidebar({
                 onClick={() => onEpisodeSelect(ep.episode_number)}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm transition ${
                   active
-                    ? 'bg-violet-500/20 text-violet-100 ring-1 ring-violet-500/40'
+                    ? 'bg-yellow-500/20 text-yellow-100 ring-1 ring-yellow-500/40'
                     : 'text-white/75 hover:bg-white/5'
                 }`}
               >
                 <span
                   className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold ${
-                    active ? 'bg-violet-600 text-white' : 'bg-white/10'
+                    active ? 'bg-yellow-600 text-white' : 'bg-white/10'
                   }`}
                 >
                   {ep.episode_number}

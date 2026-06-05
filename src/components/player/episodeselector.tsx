@@ -121,9 +121,9 @@ export function EpisodeSelector({
               currentSeason ===
               s.season_number
 
-              ? 'bg-purple-600 text-white'
+              ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-black'
 
-              : 'bg-white/5 hover:bg-white/10'
+              : 'bg-white/5 hover:bg-white/10 text-white'
             }
 
             `}
@@ -139,7 +139,7 @@ export function EpisodeSelector({
 
       {loading ? (
 
-        <div className="text-purple-300">
+        <div className="text-yellow-300">
           Loading episodes...
         </div>
 
@@ -178,11 +178,11 @@ export function EpisodeSelector({
 
       ?
 
-      'border-purple-500 bg-purple-500/10'
+      'border-yellow-400 bg-yellow-400/10'
 
       :
 
-      'border-white/10 hover:border-purple-400'
+      'border-white/10 hover:border-yellow-400'
       }
 
       `}
@@ -236,11 +236,11 @@ export function EpisodeSelector({
       "
       >
 
-      <div>
+      <div className="text-white">
       Episode {ep.episode_number}
       </div>
 
-      <div className="text-purple-300">
+      <div className="text-yellow-300">
       ⭐ {ep.vote_average?.toFixed(1) ?? 'N/A'}
       </div>
 
@@ -251,6 +251,7 @@ export function EpisodeSelector({
       mt-2
       text-lg
       font-bold
+      text-white
       "
       >
       {ep.name}

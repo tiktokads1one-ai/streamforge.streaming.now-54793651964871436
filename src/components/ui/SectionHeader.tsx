@@ -11,24 +11,22 @@ export function SectionHeader({
   label,
   title,
   href,
-  linkLabel = 'View all',
+  linkLabel = "View All",
 }: SectionHeaderProps) {
   return (
-    <>
-      <div className="mb-4 flex items-end justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <div>
-          {label && <p className="section-label mb-1">{label}</p>}
-          <h2 className="section-title">{title}</h2>
-        </div>
-        {href && (
-          <Link
-            to={href}
-            className="shrink-0 text-sm font-medium text-accent-bright/90 transition hover:text-accent-bright"
-          >
-            {linkLabel} →
-          </Link>
-        )}
+    <div className="mb-6 flex items-end justify-between gap-4 px-10 sm:px-14">
+      <div>
+        {label && <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-purple-400 mb-1">{label}</p>}
+        <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white">{title}</h2>
       </div>
-    </>
+      {href && (
+        <Link
+          to={href}
+          className="shrink-0 text-sm font-semibold text-white/80 hover:text-purple-400 transition-all duration-200 flex items-center gap-1"
+        >
+          {linkLabel} →
+        </Link>
+      )}
+    </div>
   );
 }

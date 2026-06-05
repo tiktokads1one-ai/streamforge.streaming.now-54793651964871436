@@ -5,28 +5,23 @@ export default {
     extend: {
       colors: {
         surface: {
-          base: '#060810',
-          raised: '#0d1020',
-          card: '#111525',
-          hover: '#181d30',
+          base: '#0F0F17',
+          raised: '#161622',
+          card: '#1E1E2E',
+          hover: '#2A2A3E',
         },
         accent: {
-          DEFAULT: '#8b5cf6',
-          bright: '#a78bfa',
-          dim: '#7c3aed',
-          muted: 'rgba(139, 92, 246, 0.14)',
+          DEFAULT: '#8B5CF6',
+          deep: '#6D28D9',
+          bright: '#A78BFA',
+          dim: '#5B21B6',
+          muted: 'rgba(139, 92, 246, 0.2)',
         },
-        violet: {
-          glow: '#c4b5fd',
-          border: 'rgba(167, 139, 250, 0.45)',
-        },
-        forge: {
-          black: '#060810',
-          dark: '#0d1020',
-          card: 'rgba(255, 255, 255, 0.04)',
-          border: 'rgba(99, 102, 241, 0.25)',
-          green: '#6366f1',
-          glow: '#818cf8',
+        purple: {
+          DEFAULT: '#8B5CF6',
+          deep: '#6D28D9',
+          light: '#A78BFA',
+          dark: '#4C1D95',
         },
       },
       fontFamily: {
@@ -34,18 +29,15 @@ export default {
         display: ['Outfit', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        glow: '0 0 40px rgba(139, 92, 246, 0.35)',
-        'glow-sm': '0 0 20px rgba(139, 92, 246, 0.22)',
-        card: '0 4px 24px rgba(0, 0, 0, 0.6)',
-        poster: '0 8px 32px rgba(0, 0, 0, 0.7)',
+        glow: '0 0 30px rgba(139, 92, 246, 0.6)',
+        'glow-sm': '0 0 15px rgba(139, 92, 246, 0.4)',
+        card: '0 4px 20px rgba(0, 0, 0, 0.6)',
       },
       backgroundImage: {
         'hero-gradient':
-          'linear-gradient(to top, #060810 0%, rgba(6,8,16,0.85) 35%, rgba(6,8,16,0.2) 70%, transparent 100%)',
-        'hero-side':
-          'linear-gradient(to right, #060810 0%, transparent 50%), linear-gradient(to left, #060810 0%, transparent 30%)',
+          'linear-gradient(to top, #0F0F17 0%, rgba(15, 15, 23, 0.95) 35%, rgba(15, 15, 23, 0.3) 70%, transparent 100%)',
         'mesh':
-          'radial-gradient(ellipse 80% 60% at 50% -30%, rgba(139,92,246,0.18), transparent), radial-gradient(ellipse 50% 40% at 100% 0%, rgba(99,102,241,0.1), transparent)',
+          'radial-gradient(ellipse 80% 60% at 50% -30%, rgba(139, 92, 246, 0.3), transparent), radial-gradient(ellipse 50% 40% at 100% 0%, rgba(109, 40, 217, 0.2), transparent)',
       },
       animation: {
         shimmer: 'shimmer 1.5s infinite',
@@ -64,4 +56,4 @@ export default {
     },
   },
   plugins: [],
-};
+}

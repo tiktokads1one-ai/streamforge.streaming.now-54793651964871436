@@ -36,11 +36,9 @@ export function HomeNavbar() {
         setIsDropdownOpen(false);
       }
     };
-
     if (isDropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -59,7 +57,6 @@ export function HomeNavbar() {
     setIsDropdownOpen(false);
   };
 
-  // Dropdown rendered via portal to escape the motion.div transform context
   const dropdown = (
     <AnimatePresence>
       {isDropdownOpen && (
@@ -71,7 +68,6 @@ export function HomeNavbar() {
           style={{ position: 'fixed', right: '1rem', top: '5rem', zIndex: 9999 }}
           className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-purple-500/10 border border-purple-200/50 dark:border-purple-700/50"
         >
-          {/* Sign In */}
           {!user && (
             <button
               onClick={handleSignIn}
@@ -86,7 +82,6 @@ export function HomeNavbar() {
 
           {!user && <div className="h-px bg-gray-200 dark:border-gray-700 border-t" />}
 
-          {/* Block Ads */}
           <div className="p-4">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
@@ -143,10 +138,8 @@ export function HomeNavbar() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
               >
-                <svg viewBox="0 0 127.14 96.36" className="w-3 h-3">
-                  <g>
-                    <path d="M107.7,8.91A107.3,107.3,0,0,0,82.14,0a1.3,1.3,0,0,0-1.17.61c-2.29,3.95-5.36,10.55-6.9,15.14a98.27,98.27,0,0,0-24.36,0C47.91,11.16,44.84,4.56,42.55.61A1.28,1.28,0,0,0,41.4,0a106.24,106.24,0,0,0-25.53,8.91A1.18,1.18,0,0,0,14.9,9.7c-8.45,12.47-12.5,26.3-10.65,47.93a1.36,1.36,0,0,0,.47,1.06,109.18,109.18,0,0,0,32.83,17.35,1.33,1.33,0,0,0,1.37-.29,77.92,77.92,0,0,0,6.3-10.34,1.25,1.25,0,0,0-.71-1.75,45.57,45.57,0,0,1-6.53-3.06,1.31,1.31,0,0,1-.18-2.25c.36-.27.75-.5,1.13-.75,13.32-6,27.82-6,41,0,.39.25.78.49,1.14.76a1.31,1.31,0,0,1-.18,2.24,44.74,44.74,0,0,1-6.52,3.06,1.26,1.26,0,0,0-.72,1.76,82.57,82.57,0,0,0,6.31,10.34,1.32,1.32,0,0,0,1.37.28,108.73,108.73,0,0,0,32.8-17.35,1.32,1.32,0,0,0,.47-1.05c1.86-21.63-2.19-35.46-10.63-47.93A1.17,1.17,0,0,0,107.7,8.91ZM42.79,59.62c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C53.61,54.33,48.89,59.62,42.79,59.62Zm41.56,0c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C95.25,54.33,90.53,59.62,84.35,59.62Z" fill="currentColor" />
-                  </g>
+                <svg viewBox="0 0 127.14 96.36" className="w-3 h-3" fill="currentColor">
+                  <path d="M107.7,8.91A107.3,107.3,0,0,0,82.14,0a1.3,1.3,0,0,0-1.17.61c-2.29,3.95-5.36,10.55-6.9,15.14a98.27,98.27,0,0,0-24.36,0C47.91,11.16,44.84,4.56,42.55.61A1.28,1.28,0,0,0,41.4,0a106.24,106.24,0,0,0-25.53,8.91A1.18,1.18,0,0,0,14.9,9.7c-8.45,12.47-12.5,26.3-10.65,47.93a1.36,1.36,0,0,0,.47,1.06,109.18,109.18,0,0,0,32.83,17.35,1.33,1.33,0,0,0,1.37-.29,77.92,77.92,0,0,0,6.3-10.34,1.25,1.25,0,0,0-.71-1.75,45.57,45.57,0,0,1-6.53-3.06,1.31,1.31,0,0,1-.18-2.25c.36-.27.75-.5,1.13-.75,13.32-6,27.82-6,41,0,.39.25.78.49,1.14.76a1.31,1.31,0,0,1-.18,2.24,44.74,44.74,0,0,1-6.52,3.06,1.26,1.26,0,0,0-.72,1.76,82.57,82.57,0,0,0,6.31,10.34,1.32,1.32,0,0,0,1.37.28,108.73,108.73,0,0,0,32.8-17.35,1.32,1.32,0,0,0,.47-1.05c1.86-21.63-2.19-35.46-10.63-47.93A1.17,1.17,0,0,0,107.7,8.91ZM42.79,59.62c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C53.61,54.33,48.89,59.62,42.79,59.62Zm41.56,0c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C95.25,54.33,90.53,59.62,84.35,59.62Z" />
                 </svg>
                 Get code from Discord
               </a>
@@ -180,7 +173,6 @@ export function HomeNavbar() {
           transition={{ duration: 0.3 }}
           className="flex items-center justify-between bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-lg shadow-purple-500/10 border border-purple-100/50 dark:border-purple-700/50"
         >
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <motion.div
               whileHover={{ rotate: 360, scale: 1.1 }}
@@ -194,7 +186,6 @@ export function HomeNavbar() {
             </span>
           </Link>
 
-          {/* Navigation Links */}
           <ul className="hidden md:flex items-center gap-1">
             {[
               { to: '/', label: 'Home' },
@@ -213,7 +204,6 @@ export function HomeNavbar() {
             ))}
           </ul>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 rounded-xl bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm border border-gray-200 dark:border-gray-600"
@@ -224,7 +214,6 @@ export function HomeNavbar() {
             </motion.div>
           </button>
 
-          {/* Search Bar */}
           <form onSubmit={handleSearch} className="hidden md:flex items-center gap-2">
             <div className="relative">
               <input
@@ -243,7 +232,6 @@ export function HomeNavbar() {
             </div>
           </form>
 
-          {/* Theme Toggle, Dropdown & Discord */}
           <div className="flex items-center gap-3">
             <motion.button
               onClick={toggleTheme}
@@ -263,7 +251,6 @@ export function HomeNavbar() {
               )}
             </motion.button>
 
-            {/* Dropdown trigger button */}
             <div className="relative">
               <button
                 onClick={(e) => {
@@ -278,7 +265,6 @@ export function HomeNavbar() {
               </button>
             </div>
 
-            {/* Portal dropdown rendered outside motion.div */}
             {createPortal(dropdown, document.body)}
 
             <motion.a
@@ -289,17 +275,14 @@ export function HomeNavbar() {
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2.5 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300"
             >
-              <svg viewBox="0 0 127.14 96.36" className="w-5 h-5">
-                <g>
-                  <path d="M107.7,8.91A107.3,107.3,0,0,0,82.14,0a1.3,1.3,0,0,0-1.17.61c-2.29,3.95-5.36,10.55-6.9,15.14a98.27,98.27,0,0,0-24.36,0C47.91,11.16,44.84,4.56,42.55.61A1.28,1.28,0,0,0,41.4,0a106.24,106.24,0,0,0-25.53,8.91A1.18,1.18,0,0,0,14.9,9.7c-8.45,12.47-12.5,26.3-10.65,47.93a1.36,1.36,0,0,0,.47,1.06,109.18,109.18,0,0,0,32.83,17.35,1.33,1.33,0,0,0,1.37-.29,77.92,77.92,0,0,0,6.3-10.34,1.25,1.25,0,0,0-.71-1.75,45.57,45.57,0,0,1-6.53-3.06,1.31,1.31,0,0,1-.18-2.25c.36-.27.75-.5,1.13-.75,13.32-6,27.82-6,41,0,.39.25.78.49,1.14.76a1.31,1.31,0,0,1-.18,2.24,44.74,44.74,0,0,1-6.52,3.06,1.26,1.26,0,0,0-.72,1.76,82.57,82.57,0,0,0,6.31,10.34,1.32,1.32,0,0,0,1.37.28,108.73,108.73,0,0,0,32.8-17.35,1.32,1.32,0,0,0,.47-1.05c1.86-21.63-2.19-35.46-10.63-47.93A1.17,1.17,0,0,0,107.7,8.91ZM42.79,59.62c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C53.61,54.33,48.89,59.62,42.79,59.62Zm41.56,0c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C95.25,54.33,90.53,59.62,84.35,59.62Z" fill="currentColor" />
-                </g>
+              <svg viewBox="0 0 127.14 96.36" className="w-5 h-5" fill="currentColor">
+                <path d="M107.7,8.91A107.3,107.3,0,0,0,82.14,0a1.3,1.3,0,0,0-1.17.61c-2.29,3.95-5.36,10.55-6.9,15.14a98.27,98.27,0,0,0-24.36,0C47.91,11.16,44.84,4.56,42.55.61A1.28,1.28,0,0,0,41.4,0a106.24,106.24,0,0,0-25.53,8.91A1.18,1.18,0,0,0,14.9,9.7c-8.45,12.47-12.5,26.3-10.65,47.93a1.36,1.36,0,0,0,.47,1.06,109.18,109.18,0,0,0,32.83,17.35,1.33,1.33,0,0,0,1.37-.29,77.92,77.92,0,0,0,6.3-10.34,1.25,1.25,0,0,0-.71-1.75,45.57,45.57,0,0,1-6.53-3.06,1.31,1.31,0,0,1-.18-2.25c.36-.27.75-.5,1.13-.75,13.32-6,27.82-6,41,0,.39.25.78.49,1.14.76a1.31,1.31,0,0,1-.18,2.24,44.74,44.74,0,0,1-6.52,3.06,1.26,1.26,0,0,0-.72,1.76,82.57,82.57,0,0,0,6.31,10.34,1.32,1.32,0,0,0,1.37.28,108.73,108.73,0,0,0,32.8-17.35,1.32,1.32,0,0,0,.47-1.05c1.86-21.63-2.19-35.46-10.63-47.93A1.17,1.17,0,0,0,107.7,8.91ZM42.79,59.62c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C53.61,54.33,48.89,59.62,42.79,59.62Zm41.56,0c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C95.25,54.33,90.53,59.62,84.35,59.62Z" />
               </svg>
               <span>Join</span>
             </motion.a>
           </div>
         </motion.div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}

@@ -1,10 +1,12 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
 import { PageLoader } from '@/components/ui/PageLoader';
+import { ProgressBar } from '@/components/ui/ProgressBar';
 import { switchProvider } from '@/providers/providerManager';
 import { useLibraryStore } from '@/store/useLibraryStore';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const HomePage = lazy(() =>
   import('@/pages/HomePage').then((m) => ({ default: m.HomePage })),
@@ -24,6 +26,12 @@ const FavoritesPage = lazy(() =>
 const HistoryPage = lazy(() =>
   import('@/pages/HistoryPage').then((m) => ({ default: m.HistoryPage })),
 );
+const ProfilePage = lazy(() =>
+  import('@/pages/ProfilePage').then((m) => ({ default: m.ProfilePage })),
+);
+const GenrePage = lazy(() =>
+  import('@/pages/GenrePage').then((m) => ({ default: m.GenrePage })),
+);
 const ProviderPage = lazy(() =>
   import('@/pages/ProviderPage').then((m) => ({ default: m.ProviderPage })),
 );
@@ -36,10 +44,29 @@ function ProviderBootstrap() {
   return null;
 }
 
+function PageTransition({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 export default function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
+        <ProgressBar />
         <ProviderBootstrap />
         <Routes>
           <Route element={<Layout />}>
@@ -47,7 +74,9 @@ export default function App() {
               index
               element={
                 <Suspense fallback={<PageLoader />}>
-                  <HomePage />
+                  <PageTransition>
+                    <HomePage />
+                  </PageTransition>
                 </Suspense>
               }
             />
@@ -55,7 +84,9 @@ export default function App() {
               path="search"
               element={
                 <Suspense fallback={<PageLoader />}>
-                  <SearchPage />
+                  <PageTransition>
+                    <SearchPage />
+                  </PageTransition>
                 </Suspense>
               }
             />
@@ -63,7 +94,9 @@ export default function App() {
               path="provider/:slug"
               element={
                 <Suspense fallback={<PageLoader />}>
-                  <ProviderPage />
+                  <PageTransition>
+                    <ProviderPage />
+                  </PageTransition>
                 </Suspense>
               }
             />
@@ -71,7 +104,9 @@ export default function App() {
               path="details/:id"
               element={
                 <Suspense fallback={<PageLoader />}>
-                  <DetailsPage />
+                  <PageTransition>
+                    <DetailsPage />
+                  </PageTransition>
                 </Suspense>
               }
             />
@@ -79,7 +114,9 @@ export default function App() {
               path="watch/:id"
               element={
                 <Suspense fallback={<PageLoader />}>
-                  <WatchPage />
+                  <PageTransition>
+                    <WatchPage />
+                  </PageTransition>
                 </Suspense>
               }
             />
@@ -87,7 +124,9 @@ export default function App() {
               path="favorites"
               element={
                 <Suspense fallback={<PageLoader />}>
-                  <FavoritesPage />
+                  <PageTransition>
+                    <FavoritesPage />
+                  </PageTransition>
                 </Suspense>
               }
             />
@@ -95,7 +134,29 @@ export default function App() {
               path="history"
               element={
                 <Suspense fallback={<PageLoader />}>
-                  <HistoryPage />
+                  <PageTransition>
+                    <HistoryPage />
+                  </PageTransition>
+                </Suspense>
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <PageTransition>
+                    <ProfilePage />
+                  </PageTransition>
+                </Suspense>
+              }
+            />
+            <Route
+              path="genre/:genre"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <PageTransition>
+                    <GenrePage />
+                  </PageTransition>
                 </Suspense>
               }
             />

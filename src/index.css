@@ -6,6 +6,15 @@
   html {
     scroll-behavior: smooth;
   }
+  body {
+    background-color: #EDECF5;
+    color: #12131A;
+  }
+}
+
+.dark body {
+  background-color: #0F0F17;
+  color: white;
 }
 
 @layer utilities {

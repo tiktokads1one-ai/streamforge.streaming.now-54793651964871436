@@ -7,6 +7,29 @@ import type {
 } from '@/types/media';
 import { readStorage, writeStorage, STORAGE_KEYS } from '@/utils/storage';
 
+const ASIAN_COUNTRIES = ['Japan', 'South Korea', 'China', 'Taiwan', 'Hong Kong', 'Thailand', 'Philippines', 'Vietnam', 'Indonesia', 'Malaysia', 'Singapore'];
+const ASIAN_LANGUAGES = ['ja', 'ko', 'zh', 'th', 'vi', 'id', 'ms', 'tl'];
+const ASIAN_GENRES = ['Asian Drama', 'K-Drama', 'J-Drama', 'C-Drama', 'Thai Drama'];
+
+function shouldFilterAsianContent(item: MediaItem): boolean {
+  // Filter by country
+  if (item.country && ASIAN_COUNTRIES.includes(item.country)) {
+    return true;
+  }
+
+  // Filter by language
+  if (item.language && ASIAN_LANGUAGES.includes(item.language)) {
+    return true;
+  }
+
+  // Filter by genre
+  if (item.genres && item.genres.some(genre => ASIAN_GENRES.includes(genre))) {
+    return true;
+  }
+
+  return false;
+}
+
 interface LibraryState {
   favorites: MediaItem[];
   history: WatchHistoryEntry[];
@@ -49,6 +72,10 @@ export const useLibraryStore = create<LibraryState>((set, get) => ({
   playback: readStorage<PlaybackSettings>(STORAGE_KEYS.playback, defaultPlayback),
 
   toggleFavorite: (item) => {
+    // Filter out Asian content
+    if (shouldFilterAsianContent(item)) {
+      return;
+    }
     set((state) => {
       const exists = state.favorites.some((f) => f.id === item.id);
       const favorites = exists
@@ -62,6 +89,10 @@ export const useLibraryStore = create<LibraryState>((set, get) => ({
   isFavorite: (id) => get().favorites.some((f) => f.id === id),
 
   addHistory: (item, progress = 0) => {
+    // Filter out Asian content
+    if (shouldFilterAsianContent(item)) {
+      return;
+    }
     set((state) => {
       const entry: WatchHistoryEntry = {
         media: item,
@@ -78,6 +109,10 @@ export const useLibraryStore = create<LibraryState>((set, get) => ({
   },
 
   updateContinueWatching: (item, progress, duration) => {
+    // Filter out Asian content
+    if (shouldFilterAsianContent(item)) {
+      return;
+    }
     set((state) => {
       const entry: ContinueWatchingItem = {
         media: item,

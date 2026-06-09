@@ -23,6 +23,8 @@ export interface MediaItem {
   voteCount?: number;
   releaseDate?: string;
   year?: number;
+  language?: string;
+  country?: string;
 }
 
 export interface ContinueWatchingItem {
@@ -52,4 +54,6 @@ export interface SearchFilters {
   genre: string;
   year: string;
   minRating: number;
+  language: string;
+  sortBy: string;
 }

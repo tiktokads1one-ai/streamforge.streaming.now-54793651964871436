@@ -38,12 +38,12 @@ const TYPE_TABS: { id: SearchFilters['type']; label: string }[] = [
 ];
 
 const GENRE_FILTER_CHIPS = [
-  'Action',
-  'Comedy',
-  'Horror',
-  'Sci-Fi',
-  'Romance',
-  'Thriller',
+  { name: 'Action', color: 'from-red-500 to-orange-500' },
+  { name: 'Comedy', color: 'from-yellow-400 to-amber-500' },
+  { name: 'Horror', color: 'from-gray-700 to-gray-900' },
+  { name: 'Sci-Fi', color: 'from-blue-500 to-cyan-500' },
+  { name: 'Romance', color: 'from-pink-500 to-rose-500' },
+  { name: 'Thriller', color: 'from-purple-500 to-violet-500' },
 ];
 
 const YEAR_CHIPS = ['2025', '2024', '2023', '2022'];
@@ -51,6 +51,34 @@ const YEAR_CHIPS = ['2025', '2024', '2023', '2022'];
 const RATING_CHIPS = [
   { value: 0, label: 'Any' },
   { value: 8, label: '8+ HD' },
+];
+
+const LANGUAGE_CHIPS = [
+  { value: '', label: 'All' },
+  { value: 'en', label: 'English' },
+  { value: 'es', label: 'Spanish' },
+  { value: 'fr', label: 'French' },
+  { value: 'de', label: 'German' },
+  { value: 'ja', label: 'Japanese' },
+  { value: 'ko', label: 'Korean' },
+];
+
+const SORT_OPTIONS = [
+  { value: 'popularity', label: 'Most Watched' },
+  { value: 'newest', label: 'Newest' },
+  { value: 'title', label: 'A-Z' },
+  { value: 'rating', label: 'Top Rated' },
+];
+
+const TRENDING_SEARCHES = [
+  'Dune: Part Two',
+  'Oppenheimer',
+  'Stranger Things',
+  'Attack on Titan',
+  'The Bear',
+  'Jujutsu Kaisen',
+  'Barbie',
+  'House of the Dragon',
 ];
 
 const TYPE_TITLES: Record<string, string> = {
@@ -66,6 +94,8 @@ function parseFilters(params: URLSearchParams): SearchFilters {
     genre: params.get('genre') ?? '',
     year: params.get('year') ?? '',
     minRating: Number(params.get('rating') ?? 0),
+    language: params.get('language') ?? '',
+    sortBy: params.get('sort') ?? 'popularity',
   };
 }
 
@@ -339,24 +369,51 @@ export function SearchPage() {
 
       <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 px-4 py-6 backdrop-blur-xl sm:px-6 lg:px-8 isolate">
         <h1 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-          Search
+          {filters.type === 'all' ? 'Search' : TYPE_TITLES[filters.type] || 'Browse'}
         </h1>
-        <SearchInput
-          value={query}
-          onChange={setQuery}
-          onSubmit={commitSearch}
-          suggestions={suggestions}
-          showSuggestions={showSuggestions}
-          onFocusChange={setFocused}
-          onSelectSuggestion={(item) => {
-            addRecentSearch(item.title);
-            setRecent(getRecentSearches());
-            setFocused(false);
-            navigate(`/details/${item.id}?type=${item.mediaType}`);
-          }}
-          autoFocus
-          size="lg"
-        />
+        
+        {filters.type === 'all' && (
+          <>
+            <SearchInput
+              value={query}
+              onChange={setQuery}
+              onSubmit={commitSearch}
+              suggestions={suggestions}
+              showSuggestions={showSuggestions}
+              onFocusChange={setFocused}
+              onSelectSuggestion={(item) => {
+                addRecentSearch(item.title);
+                setRecent(getRecentSearches());
+                setFocused(false);
+                navigate(`/details/${item.id}?type=${item.mediaType}`);
+              }}
+              autoFocus
+              size="lg"
+            />
+
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              {GENRE_FILTER_CHIPS.map((genre) => (
+                <button
+                  key={genre.name}
+                  type="button"
+                  onClick={() =>
+                    setFilters((f) => ({
+                      ...f,
+                      genre: f.genre === genre.name ? '' : genre.name,
+                    }))
+                  }
+                  className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                    filters.genre === genre.name
+                      ? `bg-gradient-to-r ${genre.color} text-white`
+                      : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
+                  }`}
+                >
+                  {genre.name}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
 
         <div className="mt-5 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
           {TYPE_TABS.map((tab) => (
@@ -375,81 +432,92 @@ export function SearchPage() {
           ))}
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          {GENRE_FILTER_CHIPS.map((genre) => (
-            <button
-              key={genre}
-              type="button"
-              onClick={() =>
-                setFilters((f) => ({
-                  ...f,
-                  genre: f.genre === genre ? '' : genre,
-                }))
-              }
-              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                filters.genre === genre
-                  ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
-                  : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
-              }`}
-            >
-              {genre}
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          {YEAR_CHIPS.map((year) => (
-            <button
-              key={year}
-              type="button"
-              onClick={() =>
-                setFilters((f) => ({
-                  ...f,
-                  year: f.year === year ? '' : year,
-                }))
-              }
-              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                filters.year === year
-                  ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
-                  : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
-              }`}
-            >
-              {year}
-            </button>
-          ))}
-          {RATING_CHIPS.map((chip) => (
-            <button
-              key={chip.value}
-              type="button"
-              onClick={() =>
-                setFilters((f) => ({ ...f, minRating: chip.value }))
-              }
-              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                filters.minRating === chip.value
-                  ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
-                  : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
-              }`}
-            >
-              {chip.label}
-            </button>
-          ))}
-          {(filters.genre || filters.year || filters.minRating > 0) && (
-            <button
-              type="button"
-              onClick={() =>
-                setFilters((f) => ({
-                  ...f,
-                  genre: '',
-                  year: '',
-                  minRating: 0,
-                }))
-              }
-              className="text-xs text-purple-600 hover:underline"
-            >
-              Clear filters
-            </button>
-          )}
-        </div>
+        {filters.type === 'all' && (
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            {YEAR_CHIPS.map((year) => (
+              <button
+                key={year}
+                type="button"
+                onClick={() =>
+                  setFilters((f) => ({
+                    ...f,
+                    year: f.year === year ? '' : year,
+                  }))
+                }
+                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                  filters.year === year
+                    ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
+                    : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
+                }`}
+              >
+                {year}
+              </button>
+            ))}
+            {RATING_CHIPS.map((chip) => (
+              <button
+                key={chip.value}
+                type="button"
+                onClick={() =>
+                  setFilters((f) => ({ ...f, minRating: chip.value }))
+                }
+                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                  filters.minRating === chip.value
+                    ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
+                    : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
+                }`}
+              >
+                {chip.label}
+              </button>
+            ))}
+            {LANGUAGE_CHIPS.map((chip) => (
+              <button
+                key={chip.value}
+                type="button"
+                onClick={() =>
+                  setFilters((f) => ({ ...f, language: chip.value }))
+                }
+                className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                  filters.language === chip.value
+                    ? 'bg-gradient-to-r from-purple-700 to-purple-500 text-white'
+                    : 'bg-white text-gray-700 border border-gray-200 hover:border-purple-300'
+                }`}
+              >
+                {chip.label}
+              </button>
+            ))}
+            <div className="ml-2 flex items-center gap-2">
+              <select
+                value={filters.sortBy}
+                onChange={(e) => setFilters((f) => ({ ...f, sortBy: e.target.value }))}
+                className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-gray-700 border border-gray-200 hover:border-purple-300 transition-all"
+              >
+                {SORT_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {(filters.genre || filters.year || filters.minRating > 0 || filters.language) && (
+              <button
+                type="button"
+                onClick={() =>
+                  setFilters((f) => ({
+                    ...f,
+                    genre: '',
+                    year: '',
+                    minRating: 0,
+                    language: '',
+                    sortBy: 'popularity',
+                  }))
+                }
+                className="text-xs text-purple-600 hover:underline"
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
+        )}
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -483,6 +551,22 @@ export function SearchPage() {
                 </div>
               </section>
             )}
+
+            <section className="mb-8">
+              <h2 className="text-sm font-semibold text-gray-600 mb-3">Trending searches</h2>
+              <div className="flex flex-wrap gap-2">
+                {TRENDING_SEARCHES.map((term) => (
+                  <button
+                    key={term}
+                    type="button"
+                    onClick={() => setQuery(term)}
+                    className="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border border-gray-200 hover:border-purple-300 hover:bg-purple-50 transition-all"
+                  >
+                    {term}
+                  </button>
+                ))}
+              </div>
+            </section>
 
             <GenreBar />
 

@@ -4,6 +4,7 @@ import { useThemeStore } from '@/store/useThemeStore';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useAdBlockerStore } from '@/store/useAdBlockerStore';
 import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export function HomeNavbar() {
   const { theme, toggleTheme } = useThemeStore();
@@ -57,6 +58,114 @@ export function HomeNavbar() {
     signInWithGoogle();
     setIsDropdownOpen(false);
   };
+
+  // Dropdown rendered via portal to escape the motion.div transform context
+  const dropdown = (
+    <AnimatePresence>
+      {isDropdownOpen && (
+        <motion.div
+          ref={dropdownRef}
+          initial={{ opacity: 0, scale: 0.95, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 10 }}
+          style={{ position: 'fixed', right: '1rem', top: '5rem', zIndex: 9999 }}
+          className="w-64 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-purple-500/10 border border-purple-200/50 dark:border-purple-700/50"
+        >
+          {/* Sign In */}
+          {!user && (
+            <button
+              onClick={handleSignIn}
+              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors duration-200 cursor-pointer rounded-t-2xl"
+            >
+              <svg className="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+              </svg>
+              <span className="font-semibold text-gray-900 dark:text-white">Sign In</span>
+            </button>
+          )}
+
+          {!user && <div className="h-px bg-gray-200 dark:border-gray-700 border-t" />}
+
+          {/* Block Ads */}
+          <div className="p-4">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-3">
+                <span className="text-xl">🛡️</span>
+                <span className="font-semibold text-gray-900 dark:text-white">Block Ads</span>
+              </div>
+              <button
+                onClick={() => {
+                  if (!user) {
+                    setDropdownError('Please sign in to use ad blocker');
+                    return;
+                  }
+                  if (isAdBlockerActive) {
+                    deactivateAdBlocker();
+                  } else {
+                    if (inviteCode.trim()) {
+                      if (verifyCode(inviteCode)) {
+                        setInviteCode('');
+                        setDropdownError('');
+                      } else {
+                        setDropdownError('Invalid code');
+                      }
+                    } else {
+                      setDropdownError('Please enter a code first');
+                    }
+                  }
+                }}
+                className={`w-12 h-6 rounded-full transition-colors duration-300 cursor-pointer ${
+                  isAdBlockerActive ? 'bg-purple-600' : 'bg-gray-300 dark:bg-gray-600'
+                }`}
+              >
+                <motion.div
+                  className="w-5 h-5 bg-white rounded-full shadow-md"
+                  animate={{ x: isAdBlockerActive ? 24 : 2 }}
+                  transition={{ duration: 0.2 }}
+                />
+              </button>
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Paste Ad Code
+              </label>
+              <textarea
+                value={inviteCode}
+                onChange={(e) => setInviteCode(e.target.value)}
+                placeholder="Paste your ad code here..."
+                rows={2}
+                className="w-full px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-900 transition-all duration-300 text-sm text-gray-900 dark:text-white resize-none"
+              />
+              
+                href="https://discord.gg/5K3zwXWpaV"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+              >
+                <svg viewBox="0 0 127.14 96.36" className="w-3 h-3">
+                  <g>
+                    <path d="M107.7,8.91A107.3,107.3,0,0,0,82.14,0a1.3,1.3,0,0,0-1.17.61c-2.29,3.95-5.36,10.55-6.9,15.14a98.27,98.27,0,0,0-24.36,0C47.91,11.16,44.84,4.56,42.55.61A1.28,1.28,0,0,0,41.4,0a106.24,106.24,0,0,0-25.53,8.91A1.18,1.18,0,0,0,14.9,9.7c-8.45,12.47-12.5,26.3-10.65,47.93a1.36,1.36,0,0,0,.47,1.06,109.18,109.18,0,0,0,32.83,17.35,1.33,1.33,0,0,0,1.37-.29,77.92,77.92,0,0,0,6.3-10.34,1.25,1.25,0,0,0-.71-1.75,45.57,45.57,0,0,1-6.53-3.06,1.31,1.31,0,0,1-.18-2.25c.36-.27.75-.5,1.13-.75,13.32-6,27.82-6,41,0,.39.25.78.49,1.14.76a1.31,1.31,0,0,1-.18,2.24,44.74,44.74,0,0,1-6.52,3.06,1.26,1.26,0,0,0-.72,1.76,82.57,82.57,0,0,0,6.31,10.34,1.32,1.32,0,0,0,1.37.28,108.73,108.73,0,0,0,32.8-17.35,1.32,1.32,0,0,0,.47-1.05c1.86-21.63-2.19-35.46-10.63-47.93A1.17,1.17,0,0,0,107.7,8.91ZM42.79,59.62c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C53.61,54.33,48.89,59.62,42.79,59.62Zm41.56,0c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C95.25,54.33,90.53,59.62,84.35,59.62Z" fill="currentColor" />
+                  </g>
+                </svg>
+                Get code from Discord
+              </a>
+            </div>
+          </div>
+
+          {dropdownError && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="px-4 pb-4 text-red-500 text-xs text-center"
+            >
+              {dropdownError}
+            </motion.p>
+          )}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 
   return (
     <header className="pt-4">
@@ -135,7 +244,7 @@ export function HomeNavbar() {
           </form>
 
           {/* Theme Toggle, Dropdown & Discord */}
-          <div className="flex items-center gap-3 relative">
+          <div className="flex items-center gap-3">
             <motion.button
               onClick={toggleTheme}
               whileHover={{ scale: 1.1 }}
@@ -154,8 +263,8 @@ export function HomeNavbar() {
               )}
             </motion.button>
 
-            {/* Dropdown Menu */}
-            <div className="relative z-50" ref={dropdownRef}>
+            {/* Dropdown trigger button */}
+            <div className="relative">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -167,121 +276,11 @@ export function HomeNavbar() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </button>
-
-              <AnimatePresence>
-                {isDropdownOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                    className="fixed right-4 top-20 w-64 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-visible z-[9999] pointer-events-auto"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {/* Sign In */}
-                    {!user && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleSignIn();
-                        }}
-                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors duration-200 cursor-pointer"
-                      >
-                        <svg className="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                        </svg>
-                        <span className="font-semibold text-gray-900 dark:text-white">Sign In</span>
-                      </button>
-                    )}
-
-                    {/* Divider */}
-                    {!user && <div className="h-px bg-gray-200 dark:border-gray-700 border-t" />}
-
-                    {/* Block Ads */}
-                    <div className="p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          <span className="text-xl">🛡️</span>
-                          <span className="font-semibold text-gray-900 dark:text-white">Block Ads</span>
-                        </div>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (!user) {
-                              setDropdownError('Please sign in to use ad blocker');
-                              return;
-                            }
-                            if (isAdBlockerActive) {
-                              deactivateAdBlocker();
-                            } else {
-                              if (inviteCode.trim()) {
-                                if (verifyCode(inviteCode)) {
-                                  setInviteCode('');
-                                  setDropdownError('');
-                                } else {
-                                  setDropdownError('Invalid code');
-                                }
-                              } else {
-                                setDropdownError('Please enter a code first');
-                              }
-                            }
-                          }}
-                          className={`w-12 h-6 rounded-full transition-colors duration-300 cursor-pointer ${
-                            isAdBlockerActive ? 'bg-purple-600' : 'bg-gray-300 dark:bg-gray-600'
-                          }`}
-                        >
-                          <motion.div
-                            className="w-5 h-5 bg-white rounded-full shadow-md"
-                            animate={{ x: isAdBlockerActive ? 24 : 2 }}
-                            transition={{ duration: 0.2 }}
-                          />
-                        </button>
-                      </div>
-
-                      {/* Ad Code Input - Always visible */}
-                      <div className="space-y-2">
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                          Paste Ad Code
-                        </label>
-                        <textarea
-                          value={inviteCode}
-                          onChange={(e) => setInviteCode(e.target.value)}
-                          placeholder="Paste your ad code here..."
-                          rows={2}
-                          className="w-full px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-900 transition-all duration-300 text-sm text-gray-900 dark:text-white resize-none"
-                        />
-                        <a
-                          href="https://discord.gg/5K3zwXWpaV"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-                        >
-                          <svg viewBox="0 0 127.14 96.36" className="w-3 h-3">
-                            <g>
-                              <path
-                                d="M107.7,8.91A107.3,107.3,0,0,0,82.14,0a1.3,1.3,0,0,0-1.17.61c-2.29,3.95-5.36,10.55-6.9,15.14a98.27,98.27,0,0,0-24.36,0C47.91,11.16,44.84,4.56,42.55.61A1.28,1.28,0,0,0,41.4,0a106.24,106.24,0,0,0-25.53,8.91A1.18,1.18,0,0,0,14.9,9.7c-8.45,12.47-12.5,26.3-10.65,47.93a1.36,1.36,0,0,0,.47,1.06,109.18,109.18,0,0,0,32.83,17.35,1.33,1.33,0,0,0,1.37-.29,77.92,77.92,0,0,0,6.3-10.34,1.25,1.25,0,0,0-.71-1.75,45.57,45.57,0,0,1-6.53-3.06,1.31,1.31,0,0,1-.18-2.25c.36-.27.75-.5,1.13-.75,13.32-6,27.82-6,41,0,.39.25.78.49,1.14.76a1.31,1.31,0,0,1-.18,2.24,44.74,44.74,0,0,1-6.52,3.06,1.26,1.26,0,0,0-.72,1.76,82.57,82.57,0,0,0,6.31,10.34,1.32,1.32,0,0,0,1.37.28,108.73,108.73,0,0,0,32.8-17.35,1.32,1.32,0,0,0,.47-1.05c1.86-21.63-2.19-35.46-10.63-47.93A1.17,1.17,0,0,0,107.7,8.91ZM42.79,59.62c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C53.61,54.33,48.89,59.62,42.79,59.62Zm41.56,0c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C95.25,54.33,90.53,59.62,84.35,59.62Z"
-                                fill="currentColor"
-                              />
-                            </g>
-                          </svg>
-                          Get code from Discord
-                        </a>
-                      </div>
-                    </div>
-
-                    {dropdownError && (
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="px-4 pb-4 text-red-500 text-xs text-center"
-                      >
-                        {dropdownError}
-                      </motion.p>
-                    )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
-            
+
+            {/* Portal dropdown rendered outside motion.div */}
+            {createPortal(dropdown, document.body)}
+
             <motion.a
               href="https://discord.gg/5K3zwXWpaV"
               target="_blank"
@@ -292,10 +291,7 @@ export function HomeNavbar() {
             >
               <svg viewBox="0 0 127.14 96.36" className="w-5 h-5">
                 <g>
-                  <path
-                    d="M107.7,8.91A107.3,107.3,0,0,0,82.14,0a1.3,1.3,0,0,0-1.17.61c-2.29,3.95-5.36,10.55-6.9,15.14a98.27,98.27,0,0,0-24.36,0C47.91,11.16,44.84,4.56,42.55.61A1.28,1.28,0,0,0,41.4,0a106.24,106.24,0,0,0-25.53,8.91A1.18,1.18,0,0,0,14.9,9.7c-8.45,12.47-12.5,26.3-10.65,47.93a1.36,1.36,0,0,0,.47,1.06,109.18,109.18,0,0,0,32.83,17.35,1.33,1.33,0,0,0,1.37-.29,77.92,77.92,0,0,0,6.3-10.34,1.25,1.25,0,0,0-.71-1.75,45.57,45.57,0,0,1-6.53-3.06,1.31,1.31,0,0,1-.18-2.25c.36-.27.75-.5,1.13-.75,13.32-6,27.82-6,41,0,.39.25.78.49,1.14.76a1.31,1.31,0,0,1-.18,2.24,44.74,44.74,0,0,1-6.52,3.06,1.26,1.26,0,0,0-.72,1.76,82.57,82.57,0,0,0,6.31,10.34,1.32,1.32,0,0,0,1.37.28,108.73,108.73,0,0,0,32.8-17.35,1.32,1.32,0,0,0,.47-1.05c1.86-21.63-2.19-35.46-10.63-47.93A1.17,1.17,0,0,0,107.7,8.91ZM42.79,59.62c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C53.61,54.33,48.89,59.62,42.79,59.62Zm41.56,0c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C95.25,54.33,90.53,59.62,84.35,59.62Z"
-                    fill="currentColor"
-                  />
+                  <path d="M107.7,8.91A107.3,107.3,0,0,0,82.14,0a1.3,1.3,0,0,0-1.17.61c-2.29,3.95-5.36,10.55-6.9,15.14a98.27,98.27,0,0,0-24.36,0C47.91,11.16,44.84,4.56,42.55.61A1.28,1.28,0,0,0,41.4,0a106.24,106.24,0,0,0-25.53,8.91A1.18,1.18,0,0,0,14.9,9.7c-8.45,12.47-12.5,26.3-10.65,47.93a1.36,1.36,0,0,0,.47,1.06,109.18,109.18,0,0,0,32.83,17.35,1.33,1.33,0,0,0,1.37-.29,77.92,77.92,0,0,0,6.3-10.34,1.25,1.25,0,0,0-.71-1.75,45.57,45.57,0,0,1-6.53-3.06,1.31,1.31,0,0,1-.18-2.25c.36-.27.75-.5,1.13-.75,13.32-6,27.82-6,41,0,.39.25.78.49,1.14.76a1.31,1.31,0,0,1-.18,2.24,44.74,44.74,0,0,1-6.52,3.06,1.26,1.26,0,0,0-.72,1.76,82.57,82.57,0,0,0,6.31,10.34,1.32,1.32,0,0,0,1.37.28,108.73,108.73,0,0,0,32.8-17.35,1.32,1.32,0,0,0,.47-1.05c1.86-21.63-2.19-35.46-10.63-47.93A1.17,1.17,0,0,0,107.7,8.91ZM42.79,59.62c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C53.61,54.33,48.89,59.62,42.79,59.62Zm41.56,0c-5.88,0-10.82-5.29-10.82-11.83,0-6.55,4.76-11.84,10.82-11.84,6.1,0,10.94,5.3,10.82,11.84C95.25,54.33,90.53,59.62,84.35,59.62Z" fill="currentColor" />
                 </g>
               </svg>
               <span>Join</span>
